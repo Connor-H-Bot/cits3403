@@ -1,7 +1,7 @@
 blockquote.twitter-tweet {
     display: inline-block;
     font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-    font-size: 240px;
+    font-size: 12px;
     font-weight: bold;
     line-height: 16px;
     border-color: #eee #ddd #bbb;
@@ -34,8 +34,25 @@ blockquote.twitter-tweet {
 
   .center {
     margin: auto;
-    width: 60%;
+    overflow: auto;
+    width: 85%;
     border: 5px solid #000000;
     padding: 10px;
     text-align: center;
+    }
+
+  .right {
+  float: right;
+  overflow: auto;
+  width: 48%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+  }  
+
+  .left {
+    float: left;
+    overflow: auto;
+    width: 48%;
+    border: 3px solid #73AD21;
+    padding: 10px;
     }
