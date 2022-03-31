@@ -1,21 +1,26 @@
 const img_array = [true, false] //boolean array containing values for each image
+let totalGuesses = 0 //Variable int to keep track of total answers
+let totalCorrect = 0 //Variable int to keep track of correct answers
 
-function check_img(x)
+function check_img(x) //call image array to see if tweet is real or fake (returns boolean)
 { 
-    return img_array[x]; //call the array and return value
+    return img_array[x]; 
 }
 
-function pic_selected(x)
+function pic_selected(x) //Checks answer and updates score + image & plays sound
 {
     if (check_img(x) == true)
     {
-        document.getElementById("score").innerHTML = "1/1: Nice, very based";
+        totalGuesses += 1;
+        totalCorrect += 1;
+        document.getElementById("score").innerHTML = totalCorrect + "/1: Nice, very based";
         document.getElementById("real_tweet").src="frontend/images/real_tweet_reaction.png";
         play_sound(true);
     } 
         else //will only be true or false so no need to put error handling in
     {
-        document.getElementById("score").innerHTML = "0/1: Kinda sus";
+        totalGuesses += 1;
+        document.getElementById("score").innerHTML = totalCorrect + "/1: Kinda sus";
         document.getElementById("fake_tweet").src="frontend/images/fake_tweet_reaction.png";
         play_sound(false);
     }
