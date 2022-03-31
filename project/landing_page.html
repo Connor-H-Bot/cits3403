@@ -3,25 +3,25 @@
 <html lang="en">
     <head>
         <title>Tweet Guesser</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Auto scaling css -->
         <meta charset="UTF-8">
         <link rel="icon" type="image/x-icon" href="favicon.ico"> <!--Taskbar icon (favicon)-->
         <link rel="stylesheet" href="layout.css"> <!--Reference to the layout page (cant get it to work so far)-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="scripts.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="scripts.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
     </head>
     <body>
         <div class="blockquote.twitter-tweet">
             <h1 id="title" class="center">Guess the trump tweet!</h1>
         </div>
-        <div id="main_div" class="center"> <!--Div1 aka the main div that centres and holds all functionality-->
-            <div id="div_2" class="left">
+        <div id="main_div" class="center"> <!-- main div in the center (not sure if correct layout) -->
+            <div id="div_2" class="left"> <!-- Left side box -->
                 <img id="real_tweet" src="frontend/images/real_tweet.png" style="width:95%;height:90%;">
                 <button onclick="pic_selected(0)">Ahrhrhrhrrhrh</button>
             </div>
-            <div id="div_3" class="right">
-                <img id="fake_tweet" src="frontend/images/fake_tweet.png" style="width:95%;height:90%;">
+            <div id="div_3" class="right"> <!-- Right side box -->
+                <img id="fake_tweet" src="frontend/images/fake_tweet.png" style="width:95%;height:90%;"> 
                 <button onclick="pic_selected(1)">Test!!!!!</button>
             </div>
             <div class="blockquote.twitter-tweet">
