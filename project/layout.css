@@ -1,12 +1,14 @@
   :root {
     --width: 60%;
-    --header-height: 59px;
+    --header-height: 62px;
   }
 
   html, body{
     width: 100%;
     height: 100%;
     background-color: black;
+    overflow: hidden;
+    margin: 0px;
   }
 
   header{
@@ -17,7 +19,7 @@
     align-items: center;
     height: 50px;
     border-bottom: 1px solid lightgray;
-    background-color: #212529;    
+    background-color: black;    
     padding: 10px;
   }
 
@@ -46,22 +48,53 @@
   }
 
   header .leftButton{
-    display: flex;
+
     justify-content: flex-start;
     align-items: center;
     padding: 5px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
   }
 
   header .rightButton{
+    
     justify-content: flex-end;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
   }
 
   .head1 {
     align-items: center;
     text-align: center;
+    color: white;
   }
 
   .scoreBox {
     align-items: center;
     text-align: center;
+    color: white;
+  }
+
+  .svg-icon {
+    width: 3em;
+    height: 3em;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: white;
+  }
+  
+  .svg-icon circle {
+    stroke: white;
+    stroke-width: 1;
   }
