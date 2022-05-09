@@ -61,28 +61,13 @@
     flex-direction: row;
   }
 
-  #tweet1{
-    margin-right: 10px;
-    margin-bottom: 10px;
-    position: relative;
-  }
-
-  #tweet2{
-    margin-left: 10px;
-    margin-bottom: 10px;
-    position: relative;
-  }
-
-  #tweet3{
-    margin-right: 10px;
-    margin-top: 10px;
-    position: relative;
-  }
-
-  #tweet4{
-    margin-left: 10px;
-    margin-top: 10px;
-    position: relative;
+  .tweetButton{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
   }
 
   /* CSS probably needs to be altered for this as its disngned */
@@ -229,6 +214,7 @@
   }
   .tweet-header-info {
     font-weight:bold;
+    text-align: left;
   }
   .tweet-header-info span {
     color:#657786;
