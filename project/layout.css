@@ -33,7 +33,6 @@
 
   .Game {
     display: flex;
-    width: 75%;
     height: calc(100% - var(--header-height));
     margin: 0 auto;
     flex-direction: column;
@@ -65,21 +64,25 @@
   #tweet1{
     margin-right: 10px;
     margin-bottom: 10px;
+    position: relative;
   }
 
   #tweet2{
     margin-left: 10px;
     margin-bottom: 10px;
+    position: relative;
   }
 
   #tweet3{
     margin-right: 10px;
     margin-top: 10px;
+    position: relative;
   }
 
   #tweet4{
     margin-left: 10px;
     margin-top: 10px;
+    position: relative;
   }
 
   /* CSS probably needs to be altered for this as its disngned */
@@ -206,10 +209,13 @@
   
   
   .tweet-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     max-width:490px;
+    width: 490px;
     background: #fff;
     margin: 0 auto;
-    /* margin-top: 50px; */
     border-radius:3px;
     padding: 30px;
     border-bottom: 1px solid #e6ecf0;
