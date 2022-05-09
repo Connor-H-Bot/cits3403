@@ -7,12 +7,14 @@
     <!-- Auto scaling css -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
+
     <!--Twitter style fonts-->
     <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- Bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- JSS -->
@@ -20,9 +22,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
-    <!-- Our Custom JS Script -->
-    <script src="scripts.js"></script>
+    <!-- W3 CSS import -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Reference to the layout page (cant get it to work so far)-->
     <link rel="stylesheet" href="layout.css">
     <!--Taskbar icon (favicon)-->
@@ -30,37 +33,49 @@
     <!-- Title For Webpage -->
     <title>Tweet Guesser</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        html,
+        body {
+            background-color: black;
+        }
+    </style>
+
 </head>
 
 <body>
     <!-- navbar -->
-    <header>
+    <header id="headerSelect">
         <!-- left side menu selector -->
-        <div class="leftButton">
-            <button class="btn btn-dark" type="button" id="mainMenu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
+        <div class="LHSButtons">
+            <!-- How To Play Button -->
+            <button class="leftButton" type="button" id="helpB">
+                <i class="fa fa-question-circle-o" id="helpButton"></i>
+            </button>
+            <!-- Leadeboard / User Statistics Button -->
+            <button class="leftButton" type="button">
+                <i class="fa fa-line-chart" id="statisticsButton"></i>
             </button>
         </div>
         <!-- Title of webpage  -->
         <div class="title"> Trumpter </div>
         <!-- right menu selector to bring up pop up window in middle of screen -->
-        <div class="rightButton">
-            <button class="btn btn-dark" type="button" id="mainMenu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
+        <div>
+            <!-- Reset Current Streak Button -->
+            <button class="rightButton" type="button">
+                <i class="fa fa-refresh" id="resetButton"></i>
+            </button>
+            <!-- Settings Button -->
+            <button class="rightButton" type="button" id="settingB">
+                <i class="fa fa-cog" id="settingsButton"></i>
             </button>
         </div>
     </header>
 
     <!-- Creates Main Game Container  -->
-    <div class="Game">
+    <div class="Game" id="mainScreen">
         <!-- TOP Container for instructions or? -->
         <div class="head1">
             <h1>Guess the trump tweet!</h1>
@@ -68,6 +83,7 @@
         <!-- Middle container that hold the tweets them self -->
         <!-- will probably have to make another two containers one for each tweet when they are converted to html and not buttons -->
         <div class="tweet">
+
                 <!-- Left side box -->
                 <div class="tweet-wrap">
                     <div class="tweet-header">
@@ -112,6 +128,16 @@
                 <button onclick="">
                     <img src="frontend/images/fake_tweet.png" style="width:95%;height:90%;">
                 </button>
+
+            <!-- Left side box -->
+            <button onclick="">
+                <img src="frontend/images/real_tweet.png" style="width:95%;height:90%;">
+            </button>
+            <!-- Right side box -->
+            <button onclick="">
+                <img src="frontend/images/fake_tweet.png" style="width:95%;height:90%;">
+            </button>
+
         </div>
         <!-- Bottom Cotainer for score box -->
         <div class="scoreBox">
@@ -120,8 +146,20 @@
         </div>
     </div>
 
+    <!-- Container for help screen which will replace/overaly the main game container -->
+    <div class="helpScreenOFF" id="helpScreen">
+        <p style="color: white">xxxxxxxxxxsssssddd</p>
+    </div>
 
+    <!-- Container for settings screen which will replace/overaly the main game container -->
+    <div class="settingsScreenOFF" id="settingsScreen">
+        <p style="color: white">xxxxxxxxx</p>
+    </div>
 
+    <!-- Our Custom JS Script -->
+    <script src="scripts.js"></script>
+    <!-- Javascript file for event handling of the Navigation Bar -->
+    <script src="navBar.js"></script>
 
 </body>
 
