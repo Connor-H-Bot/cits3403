@@ -27,15 +27,14 @@
 
   .tweet {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
   }
 
   .Game {
     display: flex;
-    width: 100vh;
+    width: 75%;
     height: calc(100% - var(--header-height));
-    max-width: var(--width);
     margin: 0 auto;
     flex-direction: column;
     justify-content: space-between;
@@ -56,6 +55,31 @@
     align-items: center;
     text-align: center;
     color: white;
+  }
+
+  #tweet-row{
+    display: flex;
+    flex-direction: row;
+  }
+
+  #tweet1{
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  #tweet2{
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  #tweet3{
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+
+  #tweet4{
+    margin-left: 10px;
+    margin-top: 10px;
   }
 
   /* CSS probably needs to be altered for this as its disngned */
@@ -185,7 +209,7 @@
     max-width:490px;
     background: #fff;
     margin: 0 auto;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     border-radius:3px;
     padding: 30px;
     border-bottom: 1px solid #e6ecf0;
