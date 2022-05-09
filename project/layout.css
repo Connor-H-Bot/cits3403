@@ -17,7 +17,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 75px;
+    height: 55px;
     border-bottom: 1px solid lightgray;
     background-color: black;    
     padding-left: 15px;
@@ -42,6 +42,10 @@
     flex-grow: 1;
   }
 
+  .hidden {
+    display: none;
+  }
+
   .head1 {
     align-items: center;
     text-align: center;
@@ -55,8 +59,8 @@
   }
 
   /* CSS probably needs to be altered for this as its disngned */
-  .helpScreen{
-    display: none;
+  .helpScreenON{
+    display: flex;
     width: 100vh;
     height: calc(100% - var(--header-height));
     max-width: var(--width);
@@ -66,9 +70,13 @@
     flex-grow: 1;
   }
 
-  /* CSS probably needs to be altered for this as its disngned */
-  .settingsScreen{
+  .helpScreenOFF{
     display: none;
+  }
+
+  /* CSS probably needs to be altered for this as its disngned */
+  .settingsScreenON{
+    display: flex;
     width: 100vh;
     height: calc(100% - var(--header-height));
     max-width: var(--width);
@@ -76,6 +84,10 @@
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+  }
+
+  .settingsScreenOFF{
+    display: none;
   }
 
   /*##########################*/
@@ -114,13 +126,28 @@
   }
 
   #helpButton{
-    font-size:40px;
+    font-size:28px;
+    color:white;
+  }
+
+  #statisticsButton{
+    font-size:28px;
+    color:white;
+  }
+
+  #resetButton{
+    font-size:28px;
+    color:white;
+  }
+
+  #settingsButton{
+    font-size:28px;
     color:white;
   }
 
   .svg-icon {
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
   }
   
   .svg-icon path,
