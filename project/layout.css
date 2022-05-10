@@ -27,8 +27,6 @@
     overflow: auto;
     width: 49%;
     height: 100%;
-    border: 3px solid #73AD21;
-    box-sizing: border-box;
     padding: 10px;
     }  
 
@@ -37,8 +35,6 @@
     overflow: auto;
     width: 49%;
     height: 100%;
-    border: 3px solid #73AD21;
-    box-sizing: border-box;
     padding: 10px;
     }  
 
@@ -54,6 +50,7 @@
     padding-left: 15px;
     padding-right: 15px;
     position: static;
+    width: 100%;
   }
 
   .tweet {
@@ -85,11 +82,6 @@
     align-items: center;
     text-align: center;
     color: white;
-  }
-
-  #tweet-row{
-    display: flex;
-    flex-direction: row;
   }
 
   .tweetButton{
@@ -230,11 +222,10 @@
       background: rgb(0, 0, 0);
       box-sizing: border-box;
       margin: 0 auto;
-      margin-top: 5px;
       border-radius:3px;
       padding: 30px;
-      border-bottom: 1px solid #e6ecf0;
-      border-top: 1px solid #e6ecf0;
+      border: 1px solid #e6ecf0;
+      
     }
     
     .tweet-header {
@@ -283,10 +274,12 @@
       When screen size < 1000 pixels make the buttons sit atop eachother
     */ 
     @media screen and (max-width:768px){
-      body {
+      #mainScreen {
         padding-left: 20px;
         padding-right: 20px;
-      }
+        background-color: #000000;
+      } 
+
       .tweet-header {
         flex-direction:column;
       }
@@ -326,8 +319,6 @@
         overflow: auto;
         width: 85%;
         height: auto;
-        border: 5px solid #e0e0e0;
-        box-sizing: border-box;
         padding: 10px;
         text-align: center;
         }
@@ -336,16 +327,13 @@
         overflow: auto;
         width: 100%;
         height: auto;
-        border: 3px solid #73AD21;
-        box-sizing: border-box;
         padding: 10px;
         }  
       .right {
         float: bottom;
         overflow: auto;
         width: 100%;
-        border: 3px solid #73AD21;
-        box-sizing: border-box;
+        height: auto;
         padding: 10px;
         }  
     }
@@ -358,8 +346,6 @@
         overflow: auto;
         width: 100%;
         height: auto;
-        border: 5px solid #e0e0e0;
-        box-sizing: border-box;
         padding: 10px;
         text-align: center;
         }
@@ -368,16 +354,12 @@
         overflow: auto;
         width: 100%;
         height: auto;
-        border: 3px solid #73AD21;
-        box-sizing: border-box;
         padding: 10px;
         }  
       .right {
         float: bottom;
         overflow: auto;
         width: 100%;
-        border: 3px solid #73AD21;
-        box-sizing: border-box;
         padding: 10px;
         }  
     }
@@ -390,8 +372,6 @@
         overflow: auto;
         width: 100%;
         height: auto;
-        border: 5px solid #e0e0e0;
-        box-sizing: border-box;
         padding: 10px;
         text-align: center;
         }
@@ -400,16 +380,14 @@
         overflow: auto;
         width: 100%;
         height: auto;
-        border: 3px solid #73AD21;
-        box-sizing: border-box;
+
         padding: 10px;
         }  
       .right {
         float: bottom;
         overflow: auto;
         width: 100%;
-        border: 3px solid #73AD21;
-        box-sizing: border-box;
+        height: auto;
         padding: 10px;
         }  
     }
