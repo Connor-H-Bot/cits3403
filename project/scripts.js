@@ -14,14 +14,14 @@ function pic_selected(x) //Checks answer and updates score + image & plays sound
         totalGuesses += 1;
         totalCorrect += 1;
         document.getElementById("score").innerHTML = totalCorrect + "/1: Nice, very based";
-        document.getElementById("real_tweet").src="frontend/images/real_tweet_reaction.png";
-        play_sound(true);
+        var hey = document.getElementById("left-tweet-body").innerHTML;
+        console.log(hey);
+        //play_sound(true);
     } 
         else //will only be true or false so no need to put error handling in
     {
         totalGuesses += 1;
         document.getElementById("score").innerHTML = totalCorrect + "/1: Kinda sus";
-        document.getElementById("fake_tweet").src="frontend/images/fake_tweet_reaction.png";
         play_sound(false);
     }
 }
@@ -39,3 +39,13 @@ function play_sound(x) //play sound according to whether answer was right or wro
             audio_false.play();
         }
 }
+
+$("#left_side_tweet").click(function() {
+    alert( "Handler for .click() called." );
+  });
+
+$(document).ready(function(){ //jquery to update the 
+    $('#left_side_tweet').click(function(){
+        $('#left-tweet-body').html('Hello World');
+    });
+  });
