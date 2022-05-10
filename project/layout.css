@@ -173,12 +173,136 @@
     stroke-width: 1;
   }
 
+  /*
+  Css regarding tweet positions
+  */
+  .center {
+    margin: auto;
+    color: #ffffff;
+    overflow: auto;
+    width: 85%;
+    height: 100%;
+    border: 5px solid #000000;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    }
+
+  .right {
+    float: right;
+    overflow: auto;
+    width: 49%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    }  
+
+  .left {
+    float: left;
+    overflow: auto;
+    width: 49%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    }
+
+    /* 
+    When the screen width is <= 1250 pixels, change the layout (this is the width of the biggest iphone, so basically mobile sizes)
+    */
+    @media screen and (max-width:1250px){
+      .center {
+        margin: auto;
+        overflow: auto;
+        width: 85%;
+        height: auto;
+        border: 5px solid #e0e0e0;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center;
+        }
+      .left {
+        float: top;
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 10px;
+        }  
+      .right {
+        float: bottom;
+        overflow: auto;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        }  
+    }
+    /* 
+    When the screen size is <= 768 pixels, change the centre body max width
+    */
+    @media screen and (max-width:768px){
+      .center {
+        margin: auto;
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        border: 5px solid #e0e0e0;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center;
+        }
+      .left {
+        float: top;
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 10px;
+        }  
+      .right {
+        float: bottom;
+        overflow: auto;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        }  
+    }
+    /* 
+    When the screen size is <= 683 pixels, change the centre body max width more
+    */
+    @media screen and (max-width:683px){
+      .center {
+        margin: auto;
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        border: 5px solid #e0e0e0;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center;
+        }
+      .left {
+        float: top;
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 10px;
+        }  
+      .right {
+        float: bottom;
+        overflow: auto;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        }  
+    }
+
   /*  
     The next 90 lines of CSS need to be properly referenced from https://codepen.io/moshfequr9/pen/wXQbPR 
     Twitter style css for tweets
   */
   body {
-    background: #e6ecf0;
+    background: #0b0c0c;
     font-family: 'Asap', sans-serif;
     font-family: 'Roboto', sans-serif;
   
@@ -192,15 +316,12 @@
     margin-right: 15px;
   }
   
-  
   .tweet-wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width:490px;
-    width: 490px;
-    background: #fff;
-    margin: 0 auto;
+    max-width:100%;
+    max-height:350px;
+    background: rgb(0, 0, 0);
+    box-sizing: border-box;
+    margin: 5px;
     border-radius:3px;
     padding: 30px;
     border-bottom: 1px solid #e6ecf0;
@@ -208,42 +329,51 @@
   }
   
   .tweet-header {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
     align-items:flex-start;
+    justify-items: start;
     font-size:14px;
   }
   .tweet-header-info {
     font-weight:bold;
-    text-align: left;
+    text-align:left;
+    color:#ffffff;
   }
   .tweet-header-info span {
-    color:#657786;
+    color:#9c9c9c;
     font-weight:normal;
-    margin-left: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .tweet-header-info p {
     font-weight:normal;
+    text-align:left;
     margin-top: 5px;
-    
+    color:#ffffff;
   }
   .tweet-img-wrap {
     padding-left: 60px;
   }
-  
   .tweet-info-counts {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     margin-left: 60px;
     margin-top: 10px;
   }
   .tweet-info-counts div {
     display: flex;
+    color:#9c9c9c;
     margin-right: 20px;
   }
   .tweet-info-counts div svg {
-    color:#657786;
+    color:#9c9c9c;
     margin-right: 10px;
   }
-  @media screen and (max-width:430px){
+  /* 
+    When screen size < 768 pixels make the buttons sit atop eachother
+  */ 
+  @media screen and (max-width:768px){
     body {
       padding-left: 20px;
       padding-right: 20px;
@@ -256,17 +386,26 @@
     }
     .tweet-header-info p {
       margin-bottom: 30px;
+      color:#ffffff;
     }
     .tweet-img-wrap {
       padding-left: 0;
     }
     .tweet-info-counts {
-    display: flex;
+    grid-template-columns: auto auto auto auto;
+    display: grid;
     margin-left: 0;
-  }
-  .tweet-info-counts div {
-    margin-right: 10px;
-  }
+    }
+    .tweet-info-counts div {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    .tweet-header-info span {
+      color:#9c9c9c;
+      font-weight:normal;
+      margin-left: 1px;
+      margin-right: 1px;
+    }
   }
   /*
     End of twitter css from https://codepen.io/moshfequr9/pen/wXQbPR 
