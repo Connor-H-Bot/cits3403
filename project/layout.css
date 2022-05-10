@@ -181,7 +181,7 @@
     color: #ffffff;
     overflow: auto;
     width: 85%;
-    height: 100%;
+    height: auto;
     border: 5px solid #000000;
     box-sizing: border-box;
     padding: 10px;
@@ -297,6 +297,36 @@
         }  
     }
 
+    /* 
+    When the screen size is <= 595 pixels, change the centre body max width more. Also remove padding & borders
+    */
+    @media screen and (max-width:595px){
+      .center {
+        margin: 1%;
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        padding: 1px;
+        text-align: center;
+        }
+      .left {
+        float: top;
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 1px;
+        }  
+      .right {
+        float: bottom;
+        overflow: auto;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1px;
+        }  
+    }
   /*  
     The next 90 lines of CSS need to be properly referenced from https://codepen.io/moshfequr9/pen/wXQbPR 
     Twitter style css for tweets
@@ -318,7 +348,7 @@
   
   .tweet-wrap {
     max-width:100%;
-    max-height:350px;
+    max-height:100%;
     background: rgb(0, 0, 0);
     box-sizing: border-box;
     margin: 5px;
@@ -395,6 +425,54 @@
     grid-template-columns: auto auto auto auto;
     display: grid;
     margin-left: 0;
+    }
+    .tweet-info-counts div {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    .tweet-header-info span {
+      color:#9c9c9c;
+      font-weight:normal;
+      margin-left: 1px;
+      margin-right: 1px;
+    }
+  }
+  /* 
+    When screen size < 555 tweets squish and scale down in size
+  */ 
+  @media screen and (max-width:555px){
+    body {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .tweet-wrap {
+      max-width:100%;
+      max-height:100%;
+      background: rgb(0, 0, 0);
+      box-sizing: border-box;
+      margin: 1px;
+      border-radius:3px;
+      padding: 10px;
+      border-bottom: 1px solid #e6ecf0;
+      border-top: 1px solid #e6ecf0;
+    }
+    .tweet-header {
+      flex-direction:column;
+    }
+    .tweet-header img {
+      margin-bottom: 20px;
+    }
+    .tweet-header-info p {
+      margin-bottom: 30px;
+      color:#ffffff;
+    }
+    .tweet-img-wrap {
+      padding-left: 0;
+    }
+    .tweet-info-counts {
+      grid-template-columns: auto auto auto auto;
+      display: grid;
+      margin-left: 0;
     }
     .tweet-info-counts div {
       margin-right: 10px;
