@@ -1,6 +1,7 @@
 const img_array = [true, false] //boolean array containing values for each image
 let totalGuesses = 0 //Variable int to keep track of total answers
 let totalCorrect = 0 //Variable int to keep track of correct answers
+const blankSpace = "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" //blank space to fill shorter tweets 
 
 function check_img(x) //call image array to see if tweet is real or fake (returns boolean)
 { 
@@ -12,11 +13,10 @@ function pic_selected(x) //Checks answer and updates score + image & plays sound
     if (check_img(x) == true)
     {
         totalGuesses += 1;
-        totalCorrect += 1;
+        totalCorrect += 1; 
         document.getElementById("score").innerHTML = totalCorrect + "/1: Nice, very based";
-        var hey = document.getElementById("left-tweet-body").innerHTML;
-        console.log(hey);
-        //play_sound(true);
+        document.getElementById("left-tweet-body").innerHTML = "Test" + blankSpace.repeat(2) + ".";
+        play_sound(true);  
     } 
         else //will only be true or false so no need to put error handling in
     {
@@ -39,13 +39,3 @@ function play_sound(x) //play sound according to whether answer was right or wro
             audio_false.play();
         }
 }
-
-$("#left_side_tweet").click(function() {
-    alert( "Handler for .click() called." );
-  });
-
-$(document).ready(function(){ //jquery to update the 
-    $('#left_side_tweet').click(function(){
-        $('#left-tweet-body').html('Hello World');
-    });
-  });
