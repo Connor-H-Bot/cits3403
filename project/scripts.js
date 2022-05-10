@@ -27,7 +27,7 @@ function pic_selected(x) //Checks answer and updates score + image & plays sound
         else //will only be true or false so no need to put error handling in
     {
         totalGuesses += 1;
-        document.getElementById("score").innerHTML = totalCorrect + "/" + totalGuesses + ": Kinda sus";
+        document.getElementById("score_box").innerHTML = totalCorrect + "/" + totalGuesses + ": Kinda sus";
         document.getElementById("right-tweet-body").innerHTML = "Sometimes I push the door close button on people running towards the elevator. I just need my own elevator sometimes. My sanctuary";
         play_sound(false);
     }
