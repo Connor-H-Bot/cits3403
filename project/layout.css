@@ -3,7 +3,8 @@
     --header-height: 62px;
   }
 
-  html, body{
+  html,
+  body {
     width: 100%;
     height: 100%;
     background-color: black;
@@ -11,7 +12,7 @@
     margin: 0px;
   }
 
-  header{
+  header {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -19,7 +20,7 @@
     align-items: center;
     height: 55px;
     border-bottom: 1px solid lightgray;
-    background-color: black;    
+    background-color: black;
     padding-left: 15px;
     padding-right: 15px;
     position: static;
@@ -56,7 +57,7 @@
     color: white;
   }
 
-  .settingsScreenON{
+  .settingsScreenON {
     display: flex;
     width: 100vh;
     height: calc(100% - var(--header-height));
@@ -67,21 +68,21 @@
     flex-grow: 1;
   }
 
-  .settingsScreenOFF{
+  .settingsScreenOFF {
     display: none;
   }
 
   /*##########################*/
   /* NAVIGATION BAR CSS BELOW */
   /*##########################*/
-  header .title{
-    color: white; 
+  header .title {
+    color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 25px;
     font-weight: 500;
   }
 
-  header .leftButton{
+  header .leftButton {
     justify-content: flex-start;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -91,7 +92,7 @@
     outline: none;
   }
 
-  header .rightButton{
+  header .rightButton {
     justify-content: flex-end;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -101,63 +102,80 @@
     outline: none;
   }
 
-  header .LHSButtons{
+  header .LHSButtons {
     align-items: center;
     display: flex;
   }
 
-  #helpButton{
-    font-size:28px;
-    color:white;
+  #helpButton {
+    font-size: 28px;
+    color: white;
   }
 
-  #statisticsButton{
-    font-size:28px;
-    color:white;
+  #statisticsButton {
+    font-size: 28px;
+    color: white;
   }
 
-  #resetButton{
-    font-size:28px;
-    color:white;
+  #resetButton {
+    font-size: 28px;
+    color: white;
   }
 
-  #settingsButton{
-    font-size:28px;
-    color:white;
+  #settingsButton {
+    font-size: 28px;
+    color: white;
   }
 
   .svg-icon {
     width: 2em;
     height: 2em;
   }
-  
+
   .svg-icon path,
   .svg-icon polygon,
   .svg-icon rect {
     fill: white;
   }
-  
+
   .svg-icon circle {
     stroke: white;
     stroke-width: 1;
   }
 
-   /*##########################*/
+  /*##########################*/
+  /* Setting Screen CSS BELOW */
+  /*##########################*/
+
+  #settingDiv1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: baseline;
+  }
+
+  .settingTitle {
+    font-size: 28px;
+    color: white;
+  }
+
+  /*##########################*/
   /* Help Screen CSS BELOW */
   /*##########################*/
-  
-  #helpTextBox1{
+
+  #helpTextBox1 {
     border-bottom: 1px solid white;
     margin-bottom: 20px;
     color: white;
     padding-bottom: 15px;
   }
 
-  #helpText{
-    color:white
+  #helpText {
+    color: white
   }
 
-  .helpScreenON{
+  .helpScreenON {
     display: flex;
     width: 100vh;
     height: calc(100% - var(--header-height));
@@ -167,11 +185,11 @@
     flex-grow: 1;
   }
 
-  .helpScreenOFF{
+  .helpScreenOFF {
     display: none;
   }
 
-  #helpDiv1{
+  #helpDiv1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -179,7 +197,7 @@
     align-items: baseline;
   }
 
-  .helpTitle{
+  .helpTitle {
     font-size: 28px;
     color: white;
   }
@@ -188,7 +206,7 @@
   /* Exit Button CSS BELOW */
   /*##########################*/
 
-  .exitButton{
+  .exitButton {
     justify-content: flex-end;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -198,7 +216,7 @@
     outline: none;
   }
 
-  #exitButton{
+  #exitButton {
     color: white;
     font-size: 28px;
   }
@@ -216,7 +234,7 @@
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
-    }
+  }
 
   .right {
     float: right;
@@ -225,7 +243,7 @@
     height: auto;
     box-sizing: border-box;
     padding: 10px;
-    }  
+  }
 
   .left {
     float: left;
@@ -234,173 +252,191 @@
     height: auto;
     box-sizing: border-box;
     padding: 10px;
-    }
+  }
+
   .button {
     background-color: #ffffff;
     padding: 1px;
     width: 100%;
-    }
-    /* 
+  }
+
+  /* 
     When the screen width is <= 1480 pixels, change the layout (this is the width of the biggest iphone, so basically mobile sizes)
     */
-    @media screen and (max-width:1480px){
-      .center {
-        margin: auto;
-        overflow: auto;
-        width: 85%;
-        height: auto;
-        border: 5px;
-        box-sizing: border-box;
-        padding: 1px;
-        text-align: center;
-        }
-      .left {
-        float: left;
-        overflow: auto;
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
-        padding: 1px;
-        }  
-      .right {
-        float: right;
-        overflow: auto;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 1px;
-        }
-      .button {
-        background-color: #ffffff;
-        padding: 1px;
-        width: 50%;
-        }    
-    }
-    /* 
-    When the screen width is <= 1250 pixels, change the layout (this is the width of the biggest iphone, so basically mobile sizes)
-    */
-    @media screen and (max-width:1250px){
-      .center {
-        margin: auto;
-        overflow: auto;
-        width: 85%;
-        height: auto;
-        border: 5px;
-        box-sizing: border-box;
-        padding: 10px;
-        text-align: center;
-        }
-      .left {
-        float: top;
-        overflow: auto;
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
-        padding: 10px;
-        }  
-      .right {
-        float: bottom;
-        overflow: auto;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-        }  
-        .button {
-          background-color: #ffffff;
-          padding: 1px;
-          width: 80%;
-          }        
-    }
-    /* 
-    When the screen size is <= 768 pixels, change the centre body max width
-    */
-    @media screen and (max-width:768px){
-      .center {
-        margin: auto;
-        overflow: auto;
-        width: 100%;
-        height: auto;
-        border: 5px;
-        box-sizing: border-box;
-        padding: 10px;
-        text-align: center;
-        }
-      .left {
-        float: top;
-        overflow: auto;
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
-        padding: 10px;
-        }  
-      .right {
-        float: bottom;
-        overflow: auto;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-        }  
-    }
-    /* 
-    When the screen size is <= 683 pixels, change the centre body max width more
-    */
-    @media screen and (max-width:683px){
-      .center {
-        margin: auto;
-        overflow: auto;
-        width: 100%;
-        height: auto;
-        border: 5px;
-        box-sizing: border-box;
-        padding: 10px;
-        text-align: center;
-        }
-      .left {
-        float: top;
-        overflow: auto;
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
-        padding: 10px;
-        }  
-      .right {
-        float: bottom;
-        overflow: auto;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-        }  
+  @media screen and (max-width:1480px) {
+    .center {
+      margin: auto;
+      overflow: auto;
+      width: 85%;
+      height: auto;
+      border: 5px;
+      box-sizing: border-box;
+      padding: 1px;
+      text-align: center;
     }
 
-    /* 
+    .left {
+      float: left;
+      overflow: auto;
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      padding: 1px;
+    }
+
+    .right {
+      float: right;
+      overflow: auto;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1px;
+    }
+
+    .button {
+      background-color: #ffffff;
+      padding: 1px;
+      width: 50%;
+    }
+  }
+
+  /* 
+    When the screen width is <= 1250 pixels, change the layout (this is the width of the biggest iphone, so basically mobile sizes)
+    */
+  @media screen and (max-width:1250px) {
+    .center {
+      margin: auto;
+      overflow: auto;
+      width: 85%;
+      height: auto;
+      border: 5px;
+      box-sizing: border-box;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .left {
+      float: top;
+      overflow: auto;
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    .right {
+      float: bottom;
+      overflow: auto;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    .button {
+      background-color: #ffffff;
+      padding: 1px;
+      width: 80%;
+    }
+  }
+
+  /* 
+    When the screen size is <= 768 pixels, change the centre body max width
+    */
+  @media screen and (max-width:768px) {
+    .center {
+      margin: auto;
+      overflow: auto;
+      width: 100%;
+      height: auto;
+      border: 5px;
+      box-sizing: border-box;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .left {
+      float: top;
+      overflow: auto;
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    .right {
+      float: bottom;
+      overflow: auto;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+  }
+
+  /* 
+    When the screen size is <= 683 pixels, change the centre body max width more
+    */
+  @media screen and (max-width:683px) {
+    .center {
+      margin: auto;
+      overflow: auto;
+      width: 100%;
+      height: auto;
+      border: 5px;
+      box-sizing: border-box;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .left {
+      float: top;
+      overflow: auto;
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    .right {
+      float: bottom;
+      overflow: auto;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+  }
+
+  /* 
     When the screen size is <= 595 pixels, change the centre body max width more. Also remove padding & borders
     */
-    @media screen and (max-width:600px){
-      .center {
-        margin: 1%;
-        overflow: auto;
-        width: 100%;
-        height: auto;
-        border: 1px;
-        box-sizing: border-box;
-        padding: 1px;
-        text-align: center;
-        }
-      .left {
-        float: top;
-        overflow: auto;
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
-        padding: 1px;
-        }  
-      .right {
-        float: bottom;
-        overflow: auto;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 1px;
-        }  
+  @media screen and (max-width:600px) {
+    .center {
+      margin: 1%;
+      overflow: auto;
+      width: 100%;
+      height: auto;
+      border: 1px;
+      box-sizing: border-box;
+      padding: 1px;
+      text-align: center;
     }
+
+    .left {
+      float: top;
+      overflow: auto;
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      padding: 1px;
+    }
+
+    .right {
+      float: bottom;
+      overflow: auto;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1px;
+    }
+  }
+
   /*  
     The next 90 lines of CSS need to be properly referenced from https://codepen.io/moshfequr9/pen/wXQbPR 
     Twitter style css for tweets
@@ -409,154 +445,181 @@
     background: #0b0c0c;
     font-family: 'Asap', sans-serif;
     font-family: 'Roboto', sans-serif;
-  
+
   }
+
   img {
-    max-width:100%;
+    max-width: 100%;
   }
+
   .avator {
-    border-radius:100px;
-    width:48px;
+    border-radius: 100px;
+    width: 48px;
     margin-right: 15px;
   }
-  
+
   .tweet-wrap {
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
     background: rgb(0, 0, 0);
     box-sizing: border-box;
     margin: 5px;
-    border-radius:3px;
+    border-radius: 3px;
     padding: 30px;
     border-bottom: 1px solid #e6ecf0;
     border-top: 1px solid #e6ecf0;
   }
-  
+
   .tweet-header {
     display: grid;
     grid-template-columns: auto auto auto;
-    align-items:flex-start;
+    align-items: flex-start;
     justify-items: start;
-    font-size:14px;
+    font-size: 14px;
   }
+
   .tweet-header-info {
-    font-weight:bold;
-    text-align:left;
-    color:#ffffff;
+    font-weight: bold;
+    text-align: left;
+    color: #ffffff;
   }
+
   .tweet-header-info span {
-    color:#9c9c9c;
-    font-weight:normal;
+    color: #9c9c9c;
+    font-weight: normal;
     margin-left: 10px;
     margin-right: 10px;
   }
+
   .tweet-header-info p {
-    font-weight:normal;
-    text-align:left;
+    font-weight: normal;
+    text-align: left;
     margin-top: 5px;
-    color:#ffffff;
+    color: #ffffff;
   }
+
   .tweet-img-wrap {
     padding-left: 60px;
   }
+
   .tweet-info-counts {
     display: grid;
     grid-template-columns: auto auto auto auto;
     margin-left: 60px;
     margin-top: 10px;
   }
+
   .tweet-info-counts div {
     display: flex;
-    color:#9c9c9c;
+    color: #9c9c9c;
     margin-right: 20px;
   }
+
   .tweet-info-counts div svg {
-    color:#9c9c9c;
+    color: #9c9c9c;
     margin-right: 10px;
   }
+
   /* 
     When screen size < 768 pixels make the buttons sit atop eachother
-  */ 
-  @media screen and (max-width:768px){
+  */
+  @media screen and (max-width:768px) {
     body {
       padding-left: 20px;
       padding-right: 20px;
     }
+
     .tweet-header {
-      flex-direction:column;
+      flex-direction: column;
     }
+
     .tweet-header img {
       margin-bottom: 20px;
     }
+
     .tweet-header-info p {
       margin-bottom: 30px;
-      color:#ffffff;
+      color: #ffffff;
     }
+
     .tweet-img-wrap {
       padding-left: 0;
     }
+
     .tweet-info-counts {
-    grid-template-columns: auto auto auto auto;
-    display: grid;
-    margin-left: 0;
+      grid-template-columns: auto auto auto auto;
+      display: grid;
+      margin-left: 0;
     }
+
     .tweet-info-counts div {
       margin-right: 10px;
       margin-left: 10px;
     }
+
     .tweet-header-info span {
-      color:#9c9c9c;
-      font-weight:normal;
+      color: #9c9c9c;
+      font-weight: normal;
       margin-left: 1px;
       margin-right: 1px;
     }
   }
+
   /* 
     When screen size < 555 tweets squish and scale down in size
-  */ 
-  @media screen and (max-width:555px){
+  */
+  @media screen and (max-width:555px) {
     body {
       padding-left: 20px;
       padding-right: 20px;
     }
+
     .tweet-wrap {
-      max-width:100%;
-      max-height:100%;
+      max-width: 100%;
+      max-height: 100%;
       background: rgb(0, 0, 0);
       box-sizing: border-box;
       margin: 1px;
-      border-radius:3px;
+      border-radius: 3px;
       padding: 10px;
       border-bottom: 1px solid #e6ecf0;
       border-top: 1px solid #e6ecf0;
     }
+
     .tweet-header {
-      flex-direction:column;
+      flex-direction: column;
     }
+
     .tweet-header img {
       margin-bottom: 20px;
     }
+
     .tweet-header-info p {
       margin-bottom: 5px;
-      color:#ffffff;
+      color: #ffffff;
     }
+
     .tweet-img-wrap {
       padding-left: 0;
     }
+
     .tweet-info-counts {
-      display:none;
+      display: none;
     }
+
     .tweet-info-counts div {
       margin-right: 10px;
       margin-left: 10px;
     }
+
     .tweet-header-info span {
-      color:#9c9c9c;
-      font-weight:normal;
+      color: #9c9c9c;
+      font-weight: normal;
       margin-left: 1px;
       margin-right: 1px;
     }
   }
+
   /*
     End of twitter css from https://codepen.io/moshfequr9/pen/wXQbPR 
-  */ 
+  */
