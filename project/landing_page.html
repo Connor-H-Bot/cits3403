@@ -57,7 +57,8 @@
             </button>
             <!-- Leadeboard / User Statistics Button -->
             <button class="leftButton" type="button">
-                <i class="fa fa-line-chart" id="statisticsButton" data-bs-toggle="modal" data-bs-target="#modalBoard"></i>
+                <i class="fa fa-line-chart" id="statisticsButton" data-bs-toggle="modal"
+                    data-bs-target="#modalBoard"></i>
             </button>
         </div>
         <!-- Title of webpage  -->
@@ -172,7 +173,8 @@
                                     2016
                                 </span>
                                 <p id="right_tweet_body">
-                                    Mark Zuckerberg I know it's your bday but can you please call me by tomorrow... We need to discuss some ideas. Money time!
+                                    Mark Zuckerberg I know it's your bday but can you please call me by tomorrow... We
+                                    need to discuss some ideas. Money time!
                                 </p>
                             </div>
                         </div>
@@ -258,7 +260,49 @@
 
     <!-- Container for help screen which will replace/overaly the main game container -->
     <div class="helpScreenOFF" id="helpScreen">
-        <p style="color: white">xxxxxxxxxxsssssddd</p>
+        <div id="helpDiv1">
+            <p class="helpTitle">How To Play</p>
+            <button class="exitButton" type="button" id="exitButton1">
+                <i class="fa fa-mail-reply" id="exitButton"></i>
+            </button>
+        </div>
+        <div id="helpTextBox1">
+            <p>Click on a tweet and try to guess the Trump tweeet.</p>
+            <p>Depending on the diffculty selected you have a pre determined amount of tries to guess
+                which of the two is the trump tweet. A counter a the bottom of the screen will appear after your first guess and display
+                a running total of how many tweets you have selected correctly</p>
+            <p>After each guess two new randomised tweets will be display for you to chose from.</p>
+            <p>If you wish to restart your attempt please press the restart icon in the navbar. (Next to
+                the settings button on the navigation bar to the top right)</p>
+        </div>
+        <div>
+            <p class="helpTitle">Difficulty Settings:</p>
+
+            <ul id="helpText">
+                <li><b>Democrat</b> (Easy)
+                    <p>Test your skills and see if you are more knowledgable than any average Democrat on Trumps famous tweets. 
+                        <br><span>Maximum Attemps: 5</span>
+                    </p>
+                </li>
+                <li><b>The Earth Might Be Flat</b>(Medium)
+                    <p>Test your skills and prove that you are aware off the rot and conspiracy that is taking over your great nation,
+                        only those vigilant enough can score more than five. 
+                        <br><span> Maximum Attemps: 10</span>
+                    </p>
+                </li>
+                <li><b>Proud Boy</b> (Hard)
+                    <p>Show off your elightenment. You're aware the vote was invalid and know your nation will never be great again.
+                        <br><span> Maximum Attemps: 20</span>
+                    </p>
+                </li>
+                <li><b> Stormed The Capital</b> (Very Hard)
+                    <p>Prove you might. You attended every rally, listened to every speech and waited idley by for every new tweet.
+                        <br> <span>Maximum Attempts: Unlimited</span>
+                    </p>
+                </li>
+            </ul>
+
+        </div>
     </div>
 
     <!-- Container for settings screen which will replace/overaly the main game container -->
