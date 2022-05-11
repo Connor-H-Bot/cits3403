@@ -56,33 +56,6 @@
     color: white;
   }
 
-  #helpDiv1{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 20px;
-    align-items: baseline;
-  }
-
-  .helpTitle{
-    font-size: 28px;
-    color: white;
-  }
-
-  .helpScreenON{
-    display: flex;
-    width: 100vh;
-    height: calc(100% - var(--header-height));
-    max-width: var(--width);
-    margin: 0 auto;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  .helpScreenOFF{
-    display: none;
-  }
-
   .settingsScreenON{
     display: flex;
     width: 100vh;
@@ -96,17 +69,6 @@
 
   .settingsScreenOFF{
     display: none;
-  }
-
-  #helpTextBox1{
-    border-bottom: 1px solid white;
-    margin-bottom: 20px;
-    color: white;
-    padding-bottom: 15px;
-  }
-
-  #helpText{
-    color:white
   }
 
   /*##########################*/
@@ -137,21 +99,6 @@
     cursor: pointer;
     overflow: hidden;
     outline: none;
-  }
-
-  .exitButton{
-    justify-content: flex-end;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-  }
-
-  #exitButton{
-    color: white;
-    font-size: 28px;
   }
 
   header .LHSButtons{
@@ -193,6 +140,67 @@
   .svg-icon circle {
     stroke: white;
     stroke-width: 1;
+  }
+
+   /*##########################*/
+  /* Help Screen CSS BELOW */
+  /*##########################*/
+  
+  #helpTextBox1{
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+    color: white;
+    padding-bottom: 15px;
+  }
+
+  #helpText{
+    color:white
+  }
+
+  .helpScreenON{
+    display: flex;
+    width: 100vh;
+    height: calc(100% - var(--header-height));
+    max-width: var(--width);
+    margin: 0 auto;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .helpScreenOFF{
+    display: none;
+  }
+
+  #helpDiv1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: baseline;
+  }
+
+  .helpTitle{
+    font-size: 28px;
+    color: white;
+  }
+
+  /*##########################*/
+  /* Exit Button CSS BELOW */
+  /*##########################*/
+
+  .exitButton{
+    justify-content: flex-end;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+  }
+
+  #exitButton{
+    color: white;
+    font-size: 28px;
   }
 
   /*
