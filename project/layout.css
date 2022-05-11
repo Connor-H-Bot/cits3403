@@ -182,7 +182,7 @@
     overflow: auto;
     width: 85%;
     height: auto;
-    border: 5px solid #000000;
+    border: 5px;
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
@@ -205,7 +205,46 @@
     box-sizing: border-box;
     padding: 10px;
     }
-
+  .button {
+    background-color: #ffffff;
+    padding: 1px;
+    width: 100%;
+    }
+    /* 
+    When the screen width is <= 1480 pixels, change the layout (this is the width of the biggest iphone, so basically mobile sizes)
+    */
+    @media screen and (max-width:1480px){
+      .center {
+        margin: auto;
+        overflow: auto;
+        width: 85%;
+        height: auto;
+        border: 5px;
+        box-sizing: border-box;
+        padding: 1px;
+        text-align: center;
+        }
+      .left {
+        float: left;
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 1px;
+        }  
+      .right {
+        float: right;
+        overflow: auto;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1px;
+        }
+      .button {
+        background-color: #ffffff;
+        padding: 1px;
+        width: 50%;
+        }    
+    }
     /* 
     When the screen width is <= 1250 pixels, change the layout (this is the width of the biggest iphone, so basically mobile sizes)
     */
@@ -215,7 +254,7 @@
         overflow: auto;
         width: 85%;
         height: auto;
-        border: 5px solid #e0e0e0;
+        border: 5px;
         box-sizing: border-box;
         padding: 10px;
         text-align: center;
@@ -235,6 +274,11 @@
         box-sizing: border-box;
         padding: 10px;
         }  
+        .button {
+          background-color: #ffffff;
+          padding: 1px;
+          width: 80%;
+          }        
     }
     /* 
     When the screen size is <= 768 pixels, change the centre body max width
@@ -245,7 +289,7 @@
         overflow: auto;
         width: 100%;
         height: auto;
-        border: 5px solid #e0e0e0;
+        border: 5px;
         box-sizing: border-box;
         padding: 10px;
         text-align: center;
@@ -275,7 +319,7 @@
         overflow: auto;
         width: 100%;
         height: auto;
-        border: 5px solid #e0e0e0;
+        border: 5px;
         box-sizing: border-box;
         padding: 10px;
         text-align: center;
@@ -300,13 +344,13 @@
     /* 
     When the screen size is <= 595 pixels, change the centre body max width more. Also remove padding & borders
     */
-    @media screen and (max-width:595px){
+    @media screen and (max-width:600px){
       .center {
         margin: 1%;
         overflow: auto;
         width: 100%;
         height: auto;
-        border: 1px solid #000000;
+        border: 1px;
         box-sizing: border-box;
         padding: 1px;
         text-align: center;
@@ -463,16 +507,14 @@
       margin-bottom: 20px;
     }
     .tweet-header-info p {
-      margin-bottom: 30px;
+      margin-bottom: 5px;
       color:#ffffff;
     }
     .tweet-img-wrap {
       padding-left: 0;
     }
     .tweet-info-counts {
-      grid-template-columns: auto auto auto auto;
-      display: grid;
-      margin-left: 0;
+      display:none;
     }
     .tweet-info-counts div {
       margin-right: 10px;
