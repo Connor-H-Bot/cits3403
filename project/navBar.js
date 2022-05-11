@@ -10,6 +10,7 @@
 document.getElementById("helpB").addEventListener("click", setHelpPageON);
 document.getElementById("settingB").addEventListener("click", setSettingPageON);
 document.getElementById("exitButton1").addEventListener("click", returnToMain1);
+document.getElementById("exitButton2").addEventListener("click", returnToMain2);
 
 function setHelpPageON(){
     document.getElementById('mainScreen').classList.replace('Game', 'hidden');
@@ -25,6 +26,12 @@ function setSettingPageON(){
 
 function returnToMain1(){
     document.getElementById('helpScreen').classList.replace('helpScreenON','helpScreenOFF');
+    document.getElementById('headerSelect').classList.remove('hidden');
+    document.getElementById('mainScreen').classList.replace('hidden', 'Game');
+}
+
+function returnToMain2(){
+    document.getElementById('settingsScreen').classList.replace('settingsScreenON','settingsScreenOFF');
     document.getElementById('headerSelect').classList.remove('hidden');
     document.getElementById('mainScreen').classList.replace('hidden', 'Game');
 }
