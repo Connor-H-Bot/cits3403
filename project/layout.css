@@ -56,21 +56,19 @@
     color: white;
   }
 
-  #tweet-row{
+  #helpDiv1{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: baseline;
   }
 
-  .tweetButton{
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
+  .helpTitle{
+    font-size: 28px;
+    color: white;
   }
 
-  /* CSS probably needs to be altered for this as its disngned */
   .helpScreenON{
     display: flex;
     width: 100vh;
@@ -78,7 +76,6 @@
     max-width: var(--width);
     margin: 0 auto;
     flex-direction: column;
-    justify-content: space-between;
     flex-grow: 1;
   }
 
@@ -86,7 +83,6 @@
     display: none;
   }
 
-  /* CSS probably needs to be altered for this as its disngned */
   .settingsScreenON{
     display: flex;
     width: 100vh;
@@ -100,6 +96,16 @@
 
   .settingsScreenOFF{
     display: none;
+  }
+
+  #helpTextBox1{
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  #helpText{
+    color:white
   }
 
   /*##########################*/
@@ -130,6 +136,21 @@
     cursor: pointer;
     overflow: hidden;
     outline: none;
+  }
+
+  .exitButton{
+    justify-content: flex-end;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+  }
+
+  #exitButton{
+    color: white;
+    font-size: 28px;
   }
 
   header .LHSButtons{
