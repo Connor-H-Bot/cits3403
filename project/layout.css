@@ -221,6 +221,46 @@
     font-size: 28px;
   }
 
+
+  /*##########################*/
+  /* Statistics CSS BELOW */
+  /*##########################*/
+
+  .statBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .statRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .statRow > :nth-child(2) > :first-child{
+    color: white;
+    background-color: rgb(26, 24, 24);
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    width:50px;
+  }
+
+  .statRow > :nth-child(1) > :first-child{
+    margin: 5px;
+  }
+
+  .statRow > :nth-child(2) > :first-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   /*
   Css regarding tweet positions
   */
