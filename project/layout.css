@@ -376,7 +376,7 @@
     */
   @media screen and (max-width:683px) {
     .center {
-      margin: auto;
+      margin: 0px;
       overflow: auto;
       width: 100%;
       height: auto;
@@ -524,11 +524,6 @@
     When screen size < 768 pixels make the buttons sit atop eachother
   */
   @media screen and (max-width:768px) {
-    body {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
     .tweet-header {
       flex-direction: column;
     }
@@ -569,11 +564,6 @@
     When screen size < 555 tweets squish and scale down in size
   */
   @media screen and (max-width:555px) {
-    body {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
     .tweet-wrap {
       max-width: 100%;
       max-height: 100%;
@@ -623,3 +613,19 @@
   /*
     End of twitter css from https://codepen.io/moshfequr9/pen/wXQbPR 
   */
+
+  /* 
+    mozilla transitions for icon
+  */
+  .rotate{
+    -moz-transition: all 1s linear;
+    -webkit-transition: all 1s linear;
+    transition: all 1s linear;
+  }
+
+  .rotate.down{
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
