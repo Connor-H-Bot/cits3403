@@ -3,6 +3,13 @@
 //post request to store current game and add to statistics.
 //if all tries are not used they are counted as fails. 
 
-//pull two new tweets and display 
+document.getElementById("resetButton").addEventListener("click", refresh_Page);
 
-//reset counter according to difficulty setting 
+function refresh_Page(){
+    populate_tweets();
+}
+
+//function to rotate icon
+$(".rotate").click(function(){
+    $(this).toggleClass("down")  ; 
+   })
