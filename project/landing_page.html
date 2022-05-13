@@ -37,12 +37,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <style>
-        html,
-        body {
-            background-color: black;
-        }
-    </style>
+        <style>
+            body{background-color: black;color: white;}
+        </style>
 
 </head>
 
@@ -248,7 +245,6 @@
                 <div class="modal-body" style="color:white">
                     <div id="modalFlex">
                         <div class="statBox">
-
                             <div class="statRow" id="timesPlayed">
                                 <div>
                                     <p>Times Played:</p>
@@ -257,17 +253,14 @@
                                     <p>0</p>
                                 </div>
                             </div>
-
                             <div class="statRow" id="numWins">
                                 <div>
                                     <p>Number of Wins:</p>
                                 </div>
-
                                 <div>
                                     <p>0</p>
                                 </div>
                             </div>
-
                             <div class="statRow" id="currStreak">
                                 <div>
                                     <p>Win %:</p>
@@ -276,7 +269,6 @@
                                     <p><span>0</span>%</p>
                                 </div>
                             </div>
-
                             <div class="statRow" id="maxStreak">
                                 <div>
                                     <p>Current Win Streak:</p>
@@ -285,7 +277,6 @@
                                     <p>0</p>
                                 </div>
                             </div>
-
                             <div class="statRow" id="highScore">
                                 <div>
                                     <p>Highest Win Streak:</p>
@@ -294,7 +285,6 @@
                                     <p>0</p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -323,37 +313,6 @@
             <p>If you wish to restart your attempt please press the restart icon (Next to
                 the settings button on the navigation bar to the top right of the page)</p>
         </div>
-        <div>
-            <p class="helpTitle">Difficulty Settings:</p>
-
-            <ul id="helpText">
-                <li><b>Democrat</b> (Easy)
-                    <p>Test your skills and see if you are more knowledgable than any average Democrat on Trumps famous
-                        tweets.
-                        <br><span>Maximum Attemps: 5</span>
-                    </p>
-                </li>
-                <li><b>The Earth Might Be Flat</b>(Medium)
-                    <p>You are starting to see the light so prove that you are aware off the rot and conspiracy that is
-                        taking over your great nation.
-                        <br><span> Maximum Attemps: 10</span>
-                    </p>
-                </li>
-                <li><b>Proud Boy</b> (Hard)
-                    <p>Show off your elightenment. You're aware the vote was invalid and know your nation will never be
-                        great again.
-                        <br><span> Maximum Attemps: 20</span>
-                    </p>
-                </li>
-                <li><b>I Stormed The Capital</b> (Very Hard)
-                    <p>Prove you might. You attended every rally, listened to every speech and waited idley by for every
-                        new tweet.
-                        <br> <span>Maximum Attempts: Unlimited</span>
-                    </p>
-                </li>
-            </ul>
-
-        </div>
     </div>
 
     <!-- Container for settings screen which will replace/overaly the main game container -->
@@ -366,20 +325,37 @@
             </button>
         </div>
 
-        <div>
+        <div class="contrastButton">
             <!-- contast button  -->
+            <p id="contrastTitle">Contrast Mode:</p>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            </div>
         </div>
 
-        <div>
+        <div class="formSubmit">
             <!-- Feature a tweet -->
+            <p id="tweetSubmitTitle">Submit a Tweet:</p>
+            <form action="/postTweet.js" id="formBox">
+                <textarea id="submitTweetBox" name="message" rows="5" cols="30" maxlength="280"
+                    placeholder="Enter text here......"></textarea>
+                <button type="submit" class="btn btn-light">Submit</button>
+            </form>
         </div>
 
-        <div>
+        <div class="formSubmit">
             <!-- Report a Issue -->
+            <p id="issueSubmitTitle">Report a Issue:</p>
+            <form action="/postTweet.js" id="formBox">
+                <textarea id="submitTweetBox" name="message" rows="5" cols="30" maxlength="280"
+                    placeholder="Enter text here......"></textarea>
+                <button type="submit" class="btn btn-light">Submit</button>
+            </form>
         </div>
 
-        <div>
+        <div class="teamLinks">
             <!-- the team with linkedin -->
+            <p id="teamTitle">Submit a Tweet:</p>
         </div>
 
     </div>
