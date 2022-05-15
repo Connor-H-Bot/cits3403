@@ -34,7 +34,6 @@ function choice_2_selected() {
 }
 
 
-
 //call image array to see if tweet is real or fake (returns boolean)
 function is_trump_tweet(x) 
 { 
