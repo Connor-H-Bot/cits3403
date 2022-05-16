@@ -1,6 +1,6 @@
 from urllib.request import url2pathname
 from app import app
-from flask import render_template, request, redirect, session
+from flask import render_template, redirect, session
 from app.forms import LoginForm
 from datetime import timedelta
 

@@ -11,3 +11,4 @@ migrate = Migrate(app, db)
 
 # IMPORT ALL USED PYTHON MODULES
 from app import routes, models
+
