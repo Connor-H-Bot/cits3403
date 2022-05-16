@@ -1,0 +1,272 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- navbar -->
+<header id="headerSelect">
+    <!-- left side menu selector -->
+    <div class="LHSButtons">
+        <!-- How To Play Button -->
+        <button class="leftButton" type="button" id="helpB" onclick="window.location='/How-to-play'">
+            <i class="fa fa-question-circle-o" id="helpButton"></i>
+        </button>
+        <!-- Leadeboard / User Statistics Button -->
+        <button class="leftButton" type="button">
+            <i class="fa fa-line-chart" id="statisticsButton" data-bs-toggle="modal" data-bs-target="#modalBoard"></i>
+        </button>
+    </div>
+    <!-- Title of webpage  -->
+    <div class="title"> Trumpter </div>
+    <!-- right menu selector to bring up pop up window in middle of screen -->
+    <div>
+        <!-- Reset Current Streak Button -->
+        <button class="rightButton" type="button" id="resetButton">
+            <i class="fa fa-refresh rotate"></i>
+        </button>
+        <!-- Settings Button -->
+        <button class="rightButton" type="button" id="settingB" onclick="window.location='/Settings'">
+            <i class="fa fa-cog" id="settingsButton"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Creates Main Game Container  -->
+<div class="Game" id="mainScreen">
+    <!-- Middle container that hold the tweets them self -->
+    <!-- will probably have to make another two containers one for each tweet when they are converted to html and not buttons -->
+    <div id="main_div" class="center">
+        <!-- main div in the center (not sure if correct layout) -->
+        <div id="div_2" class="left">
+            <!-- Left side box -->
+            <button id="choice_1" class="button flip-card">
+                <div id="left_side_tweet" class="tweet-wrap flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="tweet-header">
+                            <img src="{{ url_for('static',filename='images/trump_twitter_pfp.jpg') }}"
+                                alt="Trump picture" class="avator">
+                            <div class="tweet-header-info">Donald J. Trump
+                                <object data="{{ url_for('static',filename='svg_files/twitter-verified-badge.svg') }}"
+                                    width="12" height="12"></object>
+                                <!-- https://worldvectorlogo.com/downloaded/twitter-verified-badge -->
+                                <span>
+                                    @RealDonaldTrump
+                                </span>
+                                <span id="left_tweet_date">
+                                    ls_year
+                                </span>
+                                <p id="left_tweet_body">
+                                    ls_body
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tweet-info-counts">
+                            <div class="comments">
+                                <!-- tweet comments icon and numbers -->
+                                <svg class="feather feather-message-circle sc-dnqmqq jxshSx" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>
+                                <div class="comment-count" id="left_tweet_comments">
+                                    ls_cements
+                                </div>
+                            </div>
+                            <div class="retweets">
+                                <!-- tweet rt's icon and numbers -->
+                                <svg class="feather feather-repeat sc-dnqmqq jxshSx" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="17 1 21 5 17 9"></polyline>
+                                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                                    <polyline points="7 23 3 19 7 15"></polyline>
+                                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                                </svg>
+                                <div class="retweet-count" id="left_tweet_retweets">
+                                    ls_rts
+                                </div>
+                            </div>
+                            <div class="likes">
+                                <!-- tweet likes icon and numbers -->
+                                <svg class="feather feather-heart sc-dnqmqq jxshSx" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                    </path>
+                                </svg>
+                                <div class="likes-count" id="left_tweet_likes">
+                                    ls_likes
+                                </div>
+                            </div>
+                            <div class="message">
+                                <!-- Share tweet icon -->
+                                <svg class="feather feather-send sc-dnqmqq jxshSx" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div id="div_3" class="right">
+            <!-- Right side box -->
+            <button id="choice_2" class="button flip-card">
+                <div id="right_side_tweet" class="tweet-wrap flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="tweet-header">
+                            <img src="{{ url_for('static',filename='images/trump_twitter_pfp.jpg') }}"
+                                alt="Trump picture" class="avator">
+                            <div class="tweet-header-info">Donald J. Trump
+                                <object data="{{ url_for('static',filename='svg_files/twitter-verified-badge.svg') }}"
+                                    width="12" height="12"></object>
+                                <!-- https://worldvectorlogo.com/downloaded/twitter-verified-badge -->
+                                <span>
+                                    @RealDonaldTrump
+                                </span>
+                                <span id="right_tweet_date">
+                                    rs_year
+                                </span>
+                                <p id="right_tweet_body">
+                                    rs_body
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tweet-info-counts">
+                            <div class="left_tweet_comments">
+                                <svg class="feather feather-message-circle sc-dnqmqq jxshSx" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>
+                                <div id="right_tweet_comments" class="comment-count">
+                                    rs_comments
+                                </div>
+                            </div>
+                            <div class="retweets">
+                                <svg class="feather feather-repeat sc-dnqmqq jxshSx" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="17 1 21 5 17 9"></polyline>
+                                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                                    <polyline points="7 23 3 19 7 15"></polyline>
+                                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                                </svg>
+                                <div id="right_tweet_retweets" class="retweet-count">
+                                    rs_retweets
+                                </div>
+                            </div>
+                            <div class="likes">
+                                <svg class="feather feather-heart sc-dnqmqq jxshSx" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                    </path>
+                                </svg>
+                                <div id="right_tweet_likes" class="likes-count">
+                                    rs_likes
+                                </div>
+                            </div>
+                            <div class="message">
+                                <svg class="feather feather-send sc-dnqmqq jxshSx" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+    <!-- Bottom Cotainer for score box -->
+    <div>
+        <h2 id="score_box" class="center">
+            scorebox_body
+        </h2>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalBoard" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color:black; border:1px solid white">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color:white;" id="staticBackdropLabel">User Game Statistics</h5>
+            </div>
+            <div class="modal-body" style="color:white">
+                <div id="modalFlex">
+                    <div class="statBox">
+                        <div class="statRow" id="timesPlayed">
+                            <div>
+                                <p>Times Played:</p>
+                            </div>
+                            <div>
+                                <p>0</p>
+                            </div>
+                        </div>
+                        <div class="statRow" id="numWins">
+                            <div>
+                                <p>Number of Wins:</p>
+                            </div>
+                            <div>
+                                <p>0</p>
+                            </div>
+                        </div>
+                        <div class="statRow" id="currStreak">
+                            <div>
+                                <p>Win %:</p>
+                            </div>
+                            <div>
+                                <p><span>0</span>%</p>
+                            </div>
+                        </div>
+                        <div class="statRow" id="maxStreak">
+                            <div>
+                                <p>Current Win Streak:</p>
+                            </div>
+                            <div>
+                                <p>0</p>
+                            </div>
+                        </div>
+                        <div class="statRow" id="highScore">
+                            <div>
+                                <p>Highest Win Streak:</p>
+                            </div>
+                            <div>
+                                <p>0</p>
+                            </div>
+                        </div>
+                        <div class="Achievements">
+                            <button class="buttonTrans" type="button">
+                                <i class="fa fa-trophy" id="Acheivement1"></i>
+                            </button>
+                            <button class="buttonTrans" type="button">
+                                <i class="fa fa-500px" id="Acheivement2"></i>
+                            </button>
+                            <button class="buttonTrans" type="button">
+                                <i class="fa fa-first-order" id="Acheivement3"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

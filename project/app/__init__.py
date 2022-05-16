@@ -9,4 +9,5 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+# IMPORT ALL USED PYTHON MODULES
 from app import routes, models

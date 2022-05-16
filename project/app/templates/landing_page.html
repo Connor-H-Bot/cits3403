@@ -92,10 +92,12 @@
                     <div id="left_side_tweet" class="tweet-wrap flip-card-inner">
                         <div class="flip-card-front">
                             <div class="tweet-header">
-                                <img src="{{ url_for('static',filename='images/trump_twitter_pfp.jpg') }}" alt="Trump picture" class="avator">
+                                <img src="{{ url_for('static',filename='images/trump_twitter_pfp.jpg') }}"
+                                    alt="Trump picture" class="avator">
                                 <div class="tweet-header-info">Donald J. Trump
-                                    <object data="{{ url_for('static',filename='svg_files/twitter-verified-badge.svg') }}"width="12"
-                                        height="12"></object>
+                                    <object
+                                        data="{{ url_for('static',filename='svg_files/twitter-verified-badge.svg') }}"
+                                        width="12" height="12"></object>
                                     <!-- https://worldvectorlogo.com/downloaded/twitter-verified-badge -->
                                     <span>
                                         @RealDonaldTrump
@@ -169,10 +171,12 @@
                     <div id="right_side_tweet" class="tweet-wrap flip-card-inner">
                         <div class="flip-card-front">
                             <div class="tweet-header">
-                                <img src="{{ url_for('static',filename='images/trump_twitter_pfp.jpg') }}" alt="Trump picture" class="avator">
+                                <img src="{{ url_for('static',filename='images/trump_twitter_pfp.jpg') }}"
+                                    alt="Trump picture" class="avator">
                                 <div class="tweet-header-info">Donald J. Trump
-                                    <object data="{{ url_for('static',filename='svg_files/twitter-verified-badge.svg') }}" width="12"
-                                        height="12"></object>
+                                    <object
+                                        data="{{ url_for('static',filename='svg_files/twitter-verified-badge.svg') }}"
+                                        width="12" height="12"></object>
                                     <!-- https://worldvectorlogo.com/downloaded/twitter-verified-badge -->
                                     <span>
                                         @RealDonaldTrump
@@ -296,6 +300,17 @@
                                     <p>0</p>
                                 </div>
                             </div>
+                            <div class="Achievements">
+                                <button class="buttonTrans" type="button">
+                                    <i class="fa fa-trophy" id="Acheivement1"></i>
+                                </button>
+                                <button class="buttonTrans" type="button">
+                                    <i class="fa fa-500px" id="Acheivement2"></i>
+                                </button>
+                                <button class="buttonTrans" type="button">
+                                    <i class="fa fa-first-order" id="Acheivement3"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -343,6 +358,15 @@
                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
             </div>
         </div>
+
+        <form action="/login" method="POST">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required="true"><br>
+            <label for="password">Last name:</label><br>
+            <input type="text" id="password" name="password" placeholder="Enter Passoword" required="true"><br><br>
+            <input type="submit" value="Submit">
+          </form> 
+
 
         <div class="formSubmit">
             <!-- Feature a tweet -->

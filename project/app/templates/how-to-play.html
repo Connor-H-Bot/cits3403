@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <!-- Container for help screen which will replace/overaly the main game container -->
+    <div class="helpScreenON" id="helpScreen">
+        <div id="helpDiv1">
+            <p class="helpTitle">How To Play</p>
+            <button class="exitButton" type="button" id="exitButton1" onclick="window.location='/'">
+                <i class="fa fa-mail-reply" id="exitButton"></i>
+            </button>
+        </div>
+        <div id="helpTextBox1">
+            <p>Click on a tweet and try to guess the Trump tweeet.</p>
+            <p>Depending on the diffculty selected you have a pre determined amount of tries to guess
+                which of the two is the trump tweet. A counter a the bottom of the screen will appear after your first
+                guess and display
+                a running total of how many tweets you have selected correctly</p>
+            <p>After each guess two new randomised tweets will be display for you to chose from.</p>
+            <p>If you wish to restart your attempt please press the restart icon (Next to
+                the settings button on the navigation bar to the top right of the page)</p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="settingsScreenON" id="settingsScreen">
+
+    <div id="settingDiv1">
+        <p class="settingTitle">Settings</p>
+        <button class="exitButton" type="button" id="exitButton2" onclick="window.location='/'">
+            <i class="fa fa-mail-reply" id="exitButton"></i>
+        </button>
+    </div>
+
+    <div class="contrastButton">
+        <!-- contast button  -->
+        <p id="contrastTitle">Contrast Mode:</p>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        </div>
+    </div>
+
+    <div class="formSubmit">
+        <!-- Feature a tweet -->
+        <p id="tweetSubmitTitle">Submit a Tweet:</p>
+        <form action="/postTweet.js" id="formBox">
+            <textarea id="submitTweetBox" name="message" rows="5" cols="30" maxlength="280"
+                placeholder="Enter text here......"></textarea>
+            <button type="submit" class="btn btn-light">Submit</button>
+        </form>
+    </div>
+
+    <div class="teamLinks">
+        <!-- the team with linkedin -->
+        <p id="teamTitle">Meet The Team:</p>
+
+        <a href="https://www.linkedin.com/in/kyronmilton/">@Kyron Milton</a>
+        <br>
+        <a href="https://www.linkedin.com/in/connor-harris-739a25151/">@Connor Harris</a>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
