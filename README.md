@@ -19,6 +19,8 @@ python3 -m venv venv
 source venv/bin/activate
 export FLASK_DEBUG=1
 
+export FLASK_APP=trumpter.py 
+
 ##Packages
 pip install -U Flask-SQLAlchemy
 pip install Flask-Migrate
