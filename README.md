@@ -12,16 +12,17 @@ In order to match the controversy/absurdity of Trump's online persona, his own t
 
 This website has been designed for the CITS3403 main project. 
 
-## Usage template
+## Usage
 
-```python
-import foobar
+```terminal
+python3 -m venv venv
+source venv/bin/activate
+export FLASK_DEBUG=1
 
-
-## Contributing
-Lorem ipsum da da da. 
-
-Please make sure to update tests as appropriate.
+##Packages
+pip install -U Flask-SQLAlchemy
+pip install Flask-Migrate
+pip install -U Flask-WTF
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
