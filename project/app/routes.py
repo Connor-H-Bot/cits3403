@@ -1,17 +1,17 @@
 from urllib.request import url2pathname
 from app import app
+from app.api import models_api
 from flask import render_template, redirect, session
 from app.forms import LoginForm
 from datetime import timedelta
-import delete_code_tests as tweet_getter #=======remove this as well as the other lines with this and the website is functional
 
 app.permanent_session_lifetime = timedelta(minutes=30)
 
 # Main route to the website.
 @app.route('/')
 def landing_page():
-    x = tweet_getter.getTweets() #======= call tweet function
-    return x # render_template('home.html')
+    # x = models_api.getTweets() THIS WORKS NOW 
+    return render_template('home.html')
 
 # Route to display view of settings page
 @app.route('/Settings')

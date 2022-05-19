@@ -5,9 +5,16 @@ from config import Config
 
 
 app = Flask(__name__)
-app.config.from_object(Config)
+
+# app.config.from_object(Config)
+# db = SQLAlchemy(app)
+# migrate = Migrate(app, db)
+
+db_name = 'app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_name
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 
 # IMPORT ALL USED PYTHON MODULES
 from app import routes, models
