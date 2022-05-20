@@ -8,3 +8,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+project/app/static/.DS_Store
+project/app/__pycache__/routes.cpython-310.pyc
+project/.DS_Store
+project/app/.DS_Store
+.DS_Store
