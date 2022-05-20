@@ -74,4 +74,5 @@ class NotTrump(db.Model): #return the non trump tweets as dictionary
             "retweets": self.retweets,
             "isTrump": False
         }
+        
         return tweet

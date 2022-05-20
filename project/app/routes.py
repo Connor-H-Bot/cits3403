@@ -12,14 +12,12 @@ app.permanent_session_lifetime = timedelta(minutes=30)
 # Main route to the website.
 @app.route('/')
 def landing_page():
-    # x = models_api.getTweets() THIS WORKS NOW 
     return render_template('home.html')
 
 # Route to display view of settings page
 @app.route('/Settings')
 def settings():
     form = LoginForm()
-    Rform = registrationForm()
     if current_user.is_authenticated:
         user = Users.query.filter_by(id=current_user.get_id()).first()
         if user.is_admin() == False:
@@ -27,8 +25,13 @@ def settings():
         else:
             tweetForm = submitaTweet()
             return render_template('settingsADM.html', tweetForm=tweetForm)
-    return render_template('settings.html', form=form, Rform=Rform)
+    return render_template('settings.html', form=form)
 
+@app.route('/Settings/Registration')
+def registration():
+    Rform = registrationForm()
+    return render_template('Registration.html', Rform=Rform)
+    
 # Route to siplay view of how to play screen
 @app.route('/How-to-play')
 def howToPlay():
