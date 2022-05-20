@@ -40,7 +40,7 @@ class Users(UserMixin, db.Model):
 
 class Trump(db.Model): #return the trump tweets as a dictionary
     __tablename__ = 'tweets_trump'
-    tweetID = db.Column(db.String, primary_key=True)
+    tweetID = db.Column(db.Integer, primary_key=True)
     tweetBody = db.Column(db.String)
     year = db.Column(db.Integer)
     likes = db.Column(db.Integer)
@@ -59,7 +59,7 @@ class Trump(db.Model): #return the trump tweets as a dictionary
 
 class NotTrump(db.Model): #return the non trump tweets as dictionary
     __tablename__ = 'tweets_other'
-    tweetID = db.Column(db.String, primary_key=True)
+    tweetID = db.Column(db.Integer, primary_key=True)
     tweetBody = db.Column(db.String)
     year = db.Column(db.Integer)
     likes = db.Column(db.Integer)
@@ -74,5 +74,5 @@ class NotTrump(db.Model): #return the non trump tweets as dictionary
             "retweets": self.retweets,
             "isTrump": False
         }
-        
+
         return tweet

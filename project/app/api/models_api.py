@@ -1,9 +1,10 @@
-from app import app, models, db
+from app import app, models, db, forms
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql.expression import func
 from flask import jsonify, redirect, url_for
 import json
 from app.forms import submitaTweet
+from project.app import forms
 
 #API for fetching a new trump tweet
 @app.route('/api/getTrump', methods=['GET'])
@@ -32,9 +33,16 @@ def submitTweet():
             db.session.commit()
             return redirect('/Settings')
         else:
-            tweet = models.NotTrump(tweetID = '123456',tweetBody = tweetSubmit.tweetBody.data, year = tweetSubmit.year.data, likes = tweetSubmit.likes.data, retweets = tweetSubmit.retweets.data)
+            tweet = models.NotTrump(tweetBody = tweetSubmit.tweetBody.data, year = tweetSubmit.year.data, likes = tweetSubmit.likes.data, retweets = tweetSubmit.retweets.data)
             db.session.add(tweet)
             db.session.commit()
             return redirect('/Settings')
     tweetForm = submitaTweet()
     return redirect('/Settings')
+
+@app.route('/api/addUser', methods=['POST'])
+def addUser(Rform):
+    user = models.Users(username = forms.Rform.username.data, passwordHash = "", email = forms.Rform.email.data, isAdmin = False)
+    user.set_password(forms.Rform.password.data)
+    db.session.add(user)
+    db.session.commit()

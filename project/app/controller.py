@@ -1,5 +1,6 @@
 from app import app, db 
 from app.models import Users
+from app.api import addUser
 from app.forms import LoginForm, registrationForm
 from flask import render_template, redirect
 from flask_login import current_user, login_user, logout_user
@@ -28,10 +29,11 @@ def register():
     #if form is validated
     if Rform.validate_on_submit():
         #add user to database
-        user = Users(username = Rform.username.data, passwordHash = "", email = Rform.email.data, isAdmin = False)
-        user.set_password(Rform.password.data)
-        db.session.add(user)
-        db.session.commit()
+        # user = Users(username = Rform.username.data, passwordHash = "", email = Rform.email.data, isAdmin = True)
+        # user.set_password(Rform.password.data)
+        # db.session.add(user)
+        # db.session.commit()
+        addUser(Rform)
         return redirect('/Settings')
     #else return to same page.
     return render_template('Registration.html', Rform=Rform)
