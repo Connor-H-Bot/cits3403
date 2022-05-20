@@ -116,3 +116,5 @@ venv.bak/
 # mypy
 .mypy_cache/
 project/app/api/__pycache__/models_api.cpython-39.pyc
+project/__pycache__/config.cpython-39.pyc
+project/app/api/__pycache__/models_api.cpython-39.pyc
