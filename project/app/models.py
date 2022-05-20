@@ -37,6 +37,16 @@ class Users(UserMixin, db.Model):
     def check_password(self, passsword):
         return check_password_hash(self.passwordHash, passsword)
 
+class userStatistics(db.Model);
+    __tablename__ = 'userStats'
+    statID = db.Column(db.Integer, primary_key=True)
+    userID = db.Column(db.Integer)
+    timesPlayed = db.Column(db.Integer)
+    numWins = db.Column(db.Integer)
+    winPercent = db.Column(db.Integer)
+    currentWinStrk = db.Column(db.Integer)
+    highestWinStrk = db.Column(db.Integer)
+
 
 class Trump(db.Model): #return the trump tweets as a dictionary
     __tablename__ = 'tweets_trump'
