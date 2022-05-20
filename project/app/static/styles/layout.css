@@ -149,6 +149,20 @@
     display: none;
   }
 
+  .logoutButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .teamLinks{
+    padding-top: 15px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px white;
+    margin-bottom: 20px;
+  }
+
   #settingDiv1 {
     display: flex;
     flex-direction: row;
@@ -194,17 +208,26 @@
     color: white;
   }
 
-  #submitTweetBox{
-    width:600px;
-    height: 75px;
-    margin-bottom:10px;
-  }
-
   #formBox{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  }
+
+  #tweetBody{
+    max-width: 400px;
+  }
+
+  .submitTweet{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px white;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
 
   /*##########################*/
