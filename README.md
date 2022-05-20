@@ -24,6 +24,7 @@ export FLASK_APP=trumpter.py
 ##Packages
 pip install -U Flask-SQLAlchemy
 pip install Flask-Migrate
+pip install flask-login
 pip install -U Flask-WTF
 
 ## License

@@ -19,27 +19,49 @@
         </div>
     </div>
 
-    <div class="formSubmit">
-        <!-- Feature a tweet -->
-        <p id="tweetSubmitTitle">Submit a Tweet:</p>
-        <form action="/postTweet.js" id="formBox">
-            <textarea id="submitTweetBox" name="message" rows="5" cols="30" maxlength="280"
-                placeholder="Enter text here......"></textarea>
-            <button type="submit" class="btn btn-light">Submit</button>
+    <div class="submitTweet">
+        <h1>Submit a Tweet</h1>
+        <form action="/api/submitTweet" method="post" novalidate id="formBox">
+            {{ tweetForm.hidden_tag() }}
+            <p>
+                {{ tweetForm.tweetBody.label }}<br>
+                {{ tweetForm.tweetBody(size=240) }}<br>
+                {% for error in tweetForm.tweetBody.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ tweetForm.year.label }}<br>
+                {{ tweetForm.year(size=4) }}<br>
+                {% for error in tweetForm.year.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            <p>
+                {{ tweetForm.likes.label }}<br>
+                {{ tweetForm.likes(size=6) }}<br>
+                {% for error in tweetForm.likes.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ tweetForm.retweets.label }}<br>
+                {{ tweetForm.retweets(size=6) }}<br>
+                {% for error in tweetForm.retweets.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+                {{ tweetForm.isTrump.label }}<br>
+                {{ tweetForm.isTrump() }}<br>
+                {% for error in tweetForm.isTrump.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            <p>{{ tweetForm.submit() }}</p>
         </form>
     </div>
 
-    <div class="teamLinks">
-        <!-- the team with linkedin -->
-        <p id="teamTitle">Meet The Team:</p>
-
-        <a href="https://www.linkedin.com/in/kyronmilton/">@Kyron Milton</a>
-        <br>
-        <a href="https://www.linkedin.com/in/connor-harris-739a25151/">@Connor Harris</a>
-
-
+    <div class="logoutButton">
+        <button type="button" class="btn btn-primary" onclick="window.location='/logout'">Logout</button>
     </div>
-
 </div>
 
 {% endblock %}
