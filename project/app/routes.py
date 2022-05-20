@@ -12,7 +12,7 @@ app.permanent_session_lifetime = timedelta(minutes=30)
 def landing_page():
     # x = models_api.getTweets() THIS WORKS NOW 
     return render_template('home.html')
-
+   
 # Route to display view of settings page
 @app.route('/Settings')
 def settings():
