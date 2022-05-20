@@ -8,4 +8,5 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-api/__pycache__
+api/__pycache__/
+project/__pycache__/
