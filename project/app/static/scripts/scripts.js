@@ -17,103 +17,7 @@ const answers_array = [new_tweetchoice_1[4], new_tweetchoice_2[4], new_tweetchoi
 
 
 //When the window loads run the populate tweets script
-window.onload = populate_tweets(); 
-
-
-//event listener for answer buttons
-document.getElementById("choice_1").addEventListener("click", choice_1_selected);
-document.getElementById("choice_2").addEventListener("click", choice_2_selected);
-
-
-//Functions to be called when a tweet is clicked
-function choice_1_selected() {
-    tweet_selected_animation("left_side_tweet", "right_side_tweet", tweets_shown);
-}
-function choice_2_selected() {
-    tweet_selected_animation("right_side_tweet", "left_side_tweet", (tweets_shown + 1));
-}
-
-
-//call image array to see if tweet is real or fake (returns boolean)
-function is_trump_tweet(x) 
-{ 
-    is_trump_tweet_bool = answers_array[x]; 
-    return is_trump_tweet_bool
-}
-
-
-//play sound according to whether answer was right or wrong
-function play_sound(x) 
-{
-    var audio_true = new Audio(src="frontend/sounds/vine_boom.mp3"); //audio if answer is correct
-    var audio_false = new Audio(src="frontend/sounds/wrong.mp3"); //audio if answer is false
-        if (x == true)
-        {
-            audio_true.play();
-        }
-            else if (x == false)
-        {
-            audio_false.play();
-        }
-}
-
-
-//When the selection is made pass it into this function to animate the selected flipcard
-function tweet_selected_animation(user_selection, other_tweet, tweet_number) {
-    var is_trump_tweet_bool = is_trump_tweet(tweet_number); //return boolean for whether the tweet was trumps or not
-    let answer_css_tostring = ""; //variable to contain the css depending on the answer
-    let other_choice_css = "";
-    if (is_trump_tweet_bool == true) {
-        answer_css_tostring = "correct_guess";
-        other_choice_css = "wrong_guess";
-    }
-    else {
-        answer_css_tostring = "wrong_guess";
-        other_choice_css = "correct_guess";
-    }
-    document.getElementById(user_selection).classList.add(answer_css_tostring); //pass the css to start the animation
-    document.getElementById(other_tweet).classList.add(other_choice_css);
-    document.getElementById("left_tweet_content").classList.add("invisible");
-    document.getElementById("right_tweet_content").classList.add("invisible");
-    function change_back() { //callback function based on timer flip the css back to show the tweets 
-        document.getElementById(user_selection).classList.remove(answer_css_tostring);
-        document.getElementById(other_tweet).classList.remove(other_choice_css);
-        document.getElementById("left_tweet_content").classList.remove("invisible");
-    document.getElementById("right_tweet_content").classList.remove("invisible");
-    }
-    setTimeout(change_back, 1400); //callback after 1.4 seconds
-    tweet_selected(is_trump_tweet_bool);
-}
-
-
-//Extend the length of the tweet body so that its always 150 characters (fills with blank spaces)
-function extend_tweets_length(input_string) {
-    var lettercount = input_string.length;
-    var blank_space = '\xa0'; //\xa0 is the symbol for a blank space
-    if (lettercount < 160) { //uses 160 as the current tweet catalogue has nothing above 160 chars
-        var blanks_to_add = (160 - lettercount);
-        blank_space += blank_space.repeat(blanks_to_add); //repeats the spaces to fill 160 chars
-    }
-    return (input_string + blank_space)
-}
-
-
-//Change integers to strings and add a comma when its above 3 figures (3000 == 3,000 & 100000 == 100,000)
-function add_commas(integer) {
-    var int_as_string_arr = (integer.toString()).split(""); //int becomes a string which is split accross an array
-    if (int_as_string_arr.length > 3) {
-        if (int_as_string_arr.length == 4) { // 1,000
-            int_as_string_arr.splice(1, 0, ",");
-        }
-        else if (int_as_string_arr.length == 5) { // 10,000
-            int_as_string_arr.splice(2, 0, ",");
-        }
-        else if (int_as_string_arr.length == 6) { // 100,000
-            int_as_string_arr.splice(3, 0, ",");
-        }
-        return int_as_string_arr.join('');
-    }
-}
+//window.onload = populate_tweets();                        ///remove these
 
 
 //Function to be called when populating tweets
@@ -148,6 +52,56 @@ function populate_tweets() {
 }
 
 
+//event listener for answer buttons
+document.getElementById("choice_1").addEventListener("click", choice_1_selected);
+document.getElementById("choice_2").addEventListener("click", choice_2_selected);
+
+
+//Functions to be called when a tweet is clicked
+function choice_1_selected() {
+    tweet_selected_animation("left_side_tweet", "right_side_tweet", tweets_shown);
+}
+function choice_2_selected() {
+    tweet_selected_animation("right_side_tweet", "left_side_tweet", (tweets_shown + 1));
+}
+
+
+//When the selection is made pass it into this function to animate the selected flipcard
+function tweet_selected_animation(user_selection, other_tweet, tweet_number) {
+    var is_trump_tweet_bool = is_trump_tweet(tweet_number); //return boolean for whether the tweet was trumps or not
+    let answer_css_tostring = ""; //variable to contain the css depending on the answer
+    let other_choice_css = "";
+    if (is_trump_tweet_bool == true) {
+        answer_css_tostring = "correct_guess";
+        other_choice_css = "wrong_guess";
+    }
+    else {
+        answer_css_tostring = "wrong_guess";
+        other_choice_css = "correct_guess";
+    }
+    document.getElementById(user_selection).classList.add(answer_css_tostring); //pass the css to start the animation
+    document.getElementById(other_tweet).classList.add(other_choice_css);
+    document.getElementById("left_tweet_content").classList.add("invisible");
+    document.getElementById("right_tweet_content").classList.add("invisible");
+    function change_back() { //callback function based on timer flip the css back to show the tweets 
+        document.getElementById(user_selection).classList.remove(answer_css_tostring);
+        document.getElementById(other_tweet).classList.remove(other_choice_css);
+        document.getElementById("left_tweet_content").classList.remove("invisible");
+    document.getElementById("right_tweet_content").classList.remove("invisible");
+    }
+    setTimeout(change_back, 1400); //callback after 1.4 seconds
+    tweet_selected(is_trump_tweet_bool);
+}
+
+
+//call image array to see if tweet is real or fake (returns boolean)
+function is_trump_tweet(x) 
+{ 
+    is_trump_tweet_bool = answers_array[x]; 
+    return is_trump_tweet_bool
+}
+
+
 //Checks answer and updates score + image & plays sound
 function tweet_selected(is_trump_tweet_bool) 
 {
@@ -178,4 +132,50 @@ function tweet_selected(is_trump_tweet_bool)
     document.getElementById("right_tweet_body").innerHTML = extend_tweets_length(new_tweetchoice_4[3]); //change the body of the new tweet 
     document.getElementById("right_tweet_comments").innerHTML = add_commas((new_tweetchoice_4[1] - new_tweetchoice_4[2])); //comments # = (likes - retweets)
     document.getElementById("right_tweet_date").innerHTML = new_tweetchoice_4[0]; //change date of new tweet
+}
+
+
+//play sound according to whether answer was right or wrong
+function play_sound(x) 
+{
+    var audio_true = new Audio(src="frontend/sounds/vine_boom.mp3"); //audio if answer is correct
+    var audio_false = new Audio(src="frontend/sounds/wrong.mp3"); //audio if answer is false
+        if (x == true)
+        {
+            audio_true.play();
+        }
+            else if (x == false)
+        {
+            audio_false.play();
+        }
+}
+
+
+//Extend the length of the tweet body so that its always 150 characters (fills with blank spaces)
+function extend_tweets_length(input_string) {
+    var lettercount = input_string.length;
+    var blank_space = '\xa0'; //\xa0 is the symbol for a blank space
+    if (lettercount < 160) { //uses 160 as the current tweet catalogue has nothing above 160 chars
+        var blanks_to_add = (160 - lettercount);
+        blank_space += blank_space.repeat(blanks_to_add); //repeats the spaces to fill 160 chars
+    }
+    return (input_string + blank_space)
+}
+
+
+//Change integers to strings and add a comma when its above 3 figures (3000 == 3,000 & 100000 == 100,000)
+function add_commas(integer) {
+    var int_as_string_arr = (integer.toString()).split(""); //int becomes a string which is split accross an array
+    if (int_as_string_arr.length > 3) {
+        if (int_as_string_arr.length == 4) { // 1,000
+            int_as_string_arr.splice(1, 0, ",");
+        }
+        else if (int_as_string_arr.length == 5) { // 10,000
+            int_as_string_arr.splice(2, 0, ",");
+        }
+        else if (int_as_string_arr.length == 6) { // 100,000
+            int_as_string_arr.splice(3, 0, ",");
+        }
+        return int_as_string_arr.join('');
+    }
 }

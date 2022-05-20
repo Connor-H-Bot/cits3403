@@ -38,7 +38,7 @@ class Users(UserMixin, db.Model):
         return check_password_hash(self.passwordHash, passsword)
 
 
-class Trump(db.Model): #get the trump tweets and return
+class Trump(db.Model): #return the trump tweets as a dictionary
     __tablename__ = 'tweets_trump'
     tweetID = db.Column(db.String, primary_key=True)
     tweetBody = db.Column(db.String)
@@ -46,11 +46,18 @@ class Trump(db.Model): #get the trump tweets and return
     likes = db.Column(db.Integer)
     retweets = db.Column(db.Integer)
 
-    def __repr__(self):
-        tweet = [self.tweetID, self.tweetBody, self.year, self.likes, self.retweets]
-        return str(tweet)
+    def to_dict(self):
+        tweet = {
+            "id": self.tweetID,
+            "body": self.tweetBody,
+            "year": self.year,
+            "likes": self.likes,
+            "retweets": self.retweets,
+            "isTrump": True
+        }
+        return tweet
 
-class NotTrump(db.Model): #return the non trump tweets
+class NotTrump(db.Model): #return the non trump tweets as dictionary
     __tablename__ = 'tweets_other'
     tweetID = db.Column(db.String, primary_key=True)
     tweetBody = db.Column(db.String)
@@ -58,6 +65,13 @@ class NotTrump(db.Model): #return the non trump tweets
     likes = db.Column(db.Integer)
     retweets = db.Column(db.Integer)
 
-    def __repr__(self):
-        tweet = [self.tweetID, self.tweetBody, self.year, self.likes, self.retweets]
-        return str(tweet)
+    def to_dict(self):
+        tweet = {
+            "id": self.tweetID,
+            "body": self.tweetBody,
+            "year": self.year,
+            "likes": self.likes,
+            "retweets": self.retweets,
+            "isTrump": False
+        }
+        return tweet
