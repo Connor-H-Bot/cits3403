@@ -36,27 +36,25 @@
                 {% for error in tweetForm.year.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
-            </p>
+            <p>
                 {{ tweetForm.likes.label }}<br>
                 {{ tweetForm.likes(size=6) }}<br>
                 {% for error in tweetForm.likes.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            </p>
+            <p>
                 {{ tweetForm.retweets.label }}<br>
                 {{ tweetForm.retweets(size=6) }}<br>
                 {% for error in tweetForm.retweets.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
-            </p>
             </p>
                 {{ tweetForm.isTrump.label }}<br>
                 {{ tweetForm.isTrump() }}<br>
                 {% for error in tweetForm.isTrump.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
-            </p>
             <p>{{ tweetForm.submit() }}</p>
         </form>
     </div>

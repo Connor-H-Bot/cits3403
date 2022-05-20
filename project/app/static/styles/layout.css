@@ -774,6 +774,10 @@
       margin-left: 1px;
       margin-right: 1px;
     }
+
+    #tweetBody{
+      max-width: 325px;
+    }
   }
 
   /*
