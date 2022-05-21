@@ -4,23 +4,26 @@
 */
 
 
-//Global variables for total guesses and total answers
-var totalGuesses = 0; 
-var totalCorrect = 0;
-var tweets_shown = 0; 
+//Global variables
+var current_streak = 0; // how many guesses the user's got correct
+var tweets_shown = 0; //counts how many tweets have been displayed
 var trump_tweet = {}; //JSON arrays to hold the current tweet
 var other_tweet = {};
 var tweets_array = []; // Boolean values for if the tweet is trump [0] = left, [1] = right
-var is_trump_bool = false;
 
 
-window.onload = load_tweets(); //loads tweets
+// When the window loads it initialises the tweets
+window.onload = load_tweets(); 
 
 
-function load_tweets(){ //Main constructor. Calls tweets, then populates the tweet bodies accordingly
-    get_trump_json();
+//Construct the game 
+function load_tweets(){ 
+    //get_x_json retrieves the two tweets from the server
+    get_trump_json(); 
     get_other_json();
-    tweets_refresh_animation(); //refreshes tweets to grey
+    //changes the tweets to grey for a loading procedure
+    tweets_refresh_animation(); 
+    //populates the tweets with the loaded json
     populate_tweets();
 }
 
@@ -43,59 +46,87 @@ function get_other_json(){ //get non trump tweet
 //Randomise the position of the trump tweet (decide which side it is on)
 function tweet_position() {
     var random_int = (Math.floor(Math.random() * 100) % 2);
+    
     if (random_int == 0) {
         tweets_array = [true, false];
         return [trump_tweet, other_tweet];
     }
-    else {
+    else if (random_int == 1) {
         tweets_array = [false, true];
         return [other_tweet, trump_tweet];
     }
 }
 
 
-//Populates the tweets
+//Populates the tweets and resets the game to 0. After this all the functions are driven by a mouse click event
 function populate_tweets() {
-    totalGuesses = 0; //Reset both these values back to 0 in case reset button was pressed
-    totalCorrect = 0; 
+    current_streak = 0; 
     tweets_shown = 0;
-
-    var trump_loc = tweet_position();
-    populate_left_tweets(trump_loc[0])
-    populate_right_tweets(trump_loc[1])
+    var trump_loc = tweet_position(); //Randomises tweet positions, storing values as an array
+    populate_left_tweets(trump_loc[0]);
+    populate_right_tweets(trump_loc[1]);
 }
 
 
-//event listener for answer buttons
-document.getElementById("choice_1").addEventListener("click", choice_1_selected);
-document.getElementById("choice_2").addEventListener("click", choice_2_selected);
+//Listen for a click on the tweet
+document.getElementById("choice_1").addEventListener("click", choice_1_selected); //Left tweet
+document.getElementById("choice_2").addEventListener("click", choice_2_selected); //Right tweet
 
 
 //Functions to be called when a tweet is clicked
 function choice_1_selected() {
-    tweet_selected(0, 1, "left_side_tweet", "right_side_tweet"); //0 represents left side tweet
+    tweet_selected(0, "left_side_tweet", "right_side_tweet"); //Left side tweet
 }
 function choice_2_selected() {
-    tweet_selected(1, 0, "right_side_tweet", "left_side_tweet"); //1 represents right side tweet
+    tweet_selected(1, "right_side_tweet", "left_side_tweet"); //Right side tweet
 }
 
 
-function tweet_selected(tweet_selected_int, not_selected_int, user_selected, not_selected) {
-    is_trump_bool = tweets_array[tweet_selected_int]; // Takes in tweet 1 or 2 as int, saves bool for if its right/wrong
-    console.log(is_trump_bool);
+//Checks if the answer was right/wrong then animates the selection
+function tweet_selected(tweet_selected_int, user_selected, not_selected) {
+    var is_trump_bool = tweets_array[tweet_selected_int]; //
     var answer_css_array = answer_css(is_trump_bool);
-    console.log(answer_css_array);
+    animate_selection(user_selected, not_selected, answer_css_array);
 
-    animate_selection(tweet_selected_int, not_selected_int, user_selected, not_selected, answer_css_array);
+    if (is_trump_bool == true) {
+        //start next round and continue streak
+        start_next_round();
+    }
+    else {
+        //start again and display loss of streak
+        load_tweets();
+    }
 }
-function animate_selection(tweet_selected_int, not_selected_int, user_selected, not_selected, answer_css_array) {
-    document.getElementById(user_selected).classList.add(answer_css_array[tweet_selected_int]); //pass the css to start the animation
-    document.getElementById(not_selected).classList.add(answer_css_array[not_selected_int]);
+
+function start_next_round() {
+    
+    //if the streak hasnt hit 5
+    if (current_streak < 5) {
+    current_streak += 1;
+    tweets_shown += 2;
+    get_trump_json(); 
+    get_other_json();
+    var trump_loc = tweet_position(); //Randomises tweet positions, storing values as an array
+    populate_left_tweets(trump_loc[0]);
+    populate_right_tweets(trump_loc[1]);
+    document.getElementById("score_box").innerHTML = current_streak + ": Nice, very based";
+    }
+    else {
+        document.getElementById("score_box").innerHTML = "Game won!";
+    }
+}
+
+
+function animate_selection(user_selected, not_selected, answer_css_array) {
+    document.getElementById(user_selected).classList.add(answer_css_array[0]); //pass the css to start the animation
+    document.getElementById(not_selected).classList.add(answer_css_array[1]);
     document.getElementById("left_tweet_content").classList.add("invisible");
     document.getElementById("right_tweet_content").classList.add("invisible");
-    function change_back() { //callback function based on timer flip the css back to show the tweets 
-        document.getElementById(user_selected).classList.remove(answer_css_array[tweet_selected_int]);
-        document.getElementById(not_selected).classList.remove(answer_css_array[not_selected_int]);
+
+    //callback function based on timer flip the css back to show the tweets 
+    function change_back() { 
+        document.getElementById(user_selected).classList.remove(answer_css_array[0]);
+        document.getElementById(not_selected).classList.remove(answer_css_array[1]);
         document.getElementById("left_tweet_content").classList.remove("invisible");
     document.getElementById("right_tweet_content").classList.remove("invisible");
     }
@@ -138,7 +169,8 @@ function tweets_refresh_animation() {
     document.getElementById("right_tweet_content").classList.add("invisible");
     document.getElementById("score_box").innerHTML = "\"He who is redpilled is not necessarily based, just as he who is bluepilled is not necessarily cringe\" - Confucius"
     
-    function change_back() { //callback function for interval to hold animation
+    //callback function for interval to hold animation
+    function change_back() { 
         document.getElementById("left_side_tweet").classList.remove("change_guess"); //change it all back
         document.getElementById("left_tweet_content").classList.remove("invisible");
         document.getElementById("right_side_tweet").classList.remove("change_guess");
@@ -173,7 +205,9 @@ function add_commas(integer) {
 function extend_tweets_length(input_string) {
     var lettercount = input_string.length;
     var blank_space = ('\xa0' + ' '); //\xa0 is the symbol for a blank space
-    if (lettercount < 160) { //uses 160 as the current tweet catalogue has nothing above 160 chars
+
+    //uses 160 as the current tweet catalogue has nothing above 160 chars
+    if (lettercount < 160) { 
         var blanks_to_add = (160 - lettercount);
         blank_space += blank_space.repeat(blanks_to_add); //repeats the spaces to fill 160 chars
     }
