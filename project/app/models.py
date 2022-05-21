@@ -37,7 +37,7 @@ class Users(UserMixin, db.Model):
     def check_password(self, passsword):
         return check_password_hash(self.passwordHash, passsword)
 
-class userStatistics(db.Model);
+class userStatistics(db.Model):
     __tablename__ = 'userStats'
     statID = db.Column(db.Integer, primary_key=True)
     userID = db.Column(db.Integer)

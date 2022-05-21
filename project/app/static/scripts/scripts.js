@@ -2,6 +2,8 @@
     Authors: Connor Harris and Kyron Milton
     Javascript file containing code to interact with the buttons and tweets on the main page
 */
+
+
 //Global variables for total guesses and total answers
 var totalGuesses = 0; 
 var totalCorrect = 0;
@@ -42,9 +44,7 @@ function get_other_json(){ //get non trump tweet
 function tweet_position() {
     var random_int = (Math.floor(Math.random() * 100) % 2);
     if (random_int == 0) {
-        tweets_array.push(true);
-        tweets_array.push(false);
-        console.log(tweets_array);
+        tweets_array = [true, false];
         return [trump_tweet, other_tweet];
     }
     else {
@@ -82,8 +82,10 @@ function choice_2_selected() {
 
 function tweet_selected(tweet_selected_int, not_selected_int, user_selected, not_selected) {
     is_trump_bool = tweets_array[tweet_selected_int]; // Takes in tweet 1 or 2 as int, saves bool for if its right/wrong
-    console.log(tweets_array[1]);
+    console.log(is_trump_bool);
     var answer_css_array = answer_css(is_trump_bool);
+    console.log(answer_css_array);
+
     animate_selection(tweet_selected_int, not_selected_int, user_selected, not_selected, answer_css_array);
 }
 function animate_selection(tweet_selected_int, not_selected_int, user_selected, not_selected, answer_css_array) {
@@ -102,18 +104,11 @@ function animate_selection(tweet_selected_int, not_selected_int, user_selected, 
 
 
 function answer_css(index) {
-    let answer_css_tostring = ""; //variable to contain the css depending on the answer
-    let other_choice_css = "";
-
     if (index == true) {
-        answer_css_tostring = "correct_guess";
-        other_choice_css = "wrong_guess";
-        return [answer_css_tostring, other_choice_css];
+        return ["correct_guess", "wrong_guess"];
     }
     else {
-        answer_css_tostring = "wrong_guess";
-        other_choice_css = "correct_guess";
-        return [other_choice_css, answer_css_tostring];
+        return ["wrong_guess", "correct_guess"];
     }
 }
 
