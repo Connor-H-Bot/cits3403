@@ -70,7 +70,8 @@ function populate_tweets() {
 
 //Listen for a click on the tweet
 document.getElementById("choice_1").addEventListener("click", choice_1_selected); //Left tweet
-document.getElementById("choice_2").addEventListener("click", choice_2_selected); //Right tweet
+document.getElementById("choice_2").addEventListener("click", choice_2_selected); //Right tweet 
+document.getElementById("resetButton").addEventListener("click", load_tweets); //game reset
 
 
 //Functions to be called when a tweet is clicked
@@ -95,13 +96,14 @@ function tweet_selected(tweet_selected_int, user_selected, not_selected) {
     else {
         //start again and display loss of streak
         load_tweets();
+        //send lost game statistic
     }
 }
 
 function start_next_round() {
     
     //if the streak hasnt hit 5
-    if (current_streak < 5) {
+    if (current_streak < 4) {
     current_streak += 1;
     tweets_shown += 2;
     get_trump_json(); 
@@ -113,6 +115,7 @@ function start_next_round() {
     }
     else {
         document.getElementById("score_box").innerHTML = "Game won!";
+        //send win statistics
     }
 }
 
