@@ -36,3 +36,9 @@ pip install -U Flask-WTF
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+```
+## References
+Twitter style CSS: Moshfequr Rahman (2018) Codepen. _https://codepen.io/moshfequr9/pen/wXQbPR_
+Donald Trump's tweet archive: Brendan Brown (2016) Trump Tweets Archive. _https://www.thetrumparchive.com/_ **AND** _https://github.com/bpb27/tta-elastic_
+Twitter verified badge: Jay Holtslander (2021) Twitter Verified Badge Vector. _https://worldvectorlogo.com/logo/twitter-verified-badge_
