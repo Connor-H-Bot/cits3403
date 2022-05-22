@@ -5,7 +5,7 @@
 
 
 //Global variables
-var current_streak = 0; // how many guesses the user's got correct
+var correct_guesses = 0; // how many guesses the user's got correct
 var current_round = 0; // How many rounds / 5 the user has played
 var trump_tweet = {}; //JSON arrays to hold the current tweet
 var other_tweet = {};
@@ -18,7 +18,7 @@ window.onload = load_tweets();
 
 //Construct the game 
 function load_tweets(){ 
-    current_streak = 0; // how many guesses the user's got correct
+    correct_guesses = 0; // how many guesses the user's got correct
     current_round = 0; // How many rounds / 5 the user has played
     //get_x_json retrieves the two tweets from the server
     get_trump_json(); 
@@ -62,7 +62,7 @@ function tweet_position() {
 
 //Populates the tweets and resets the game to 0. After this all the functions are driven by a mouse click event
 function populate_tweets() {
-    current_streak = 0; 
+    correct_guesses = 0; 
     current_round = 0;
     var trump_loc = tweet_position(); //Randomises tweet positions, storing values as an array
     populate_left_tweets(trump_loc[0]);
@@ -106,26 +106,26 @@ function tweet_selected(tweet_selected_int, user_selected, not_selected) {
 function start_next_round(args) {
 
     //if the streak hasnt hit 5 and the last round was won
-    if (current_round < 4 && args == "guess_correct") {
-    current_streak += 1;
-    current_round += 1;
-    tweets_shown += 2;
-    document.getElementById("score_box").innerHTML = current_streak + "/" + current_round + ": " + "Nice, very based";
+    if ((current_round < 4) && (args == "guess_correct")) {
+        correct_guesses += 1;
+        current_round += 1;
+        document.getElementById("score_box").innerHTML = correct_guesses + "/" + current_round + ": " + "Nice, very based";
     } else if (current_round < 4 && args == "guess_incorrect") {
         current_round += 1;
-        tweets_shown += 2;
-        document.getElementById("score_box").innerHTML = current_streak + "/" + current_round + ": " + "Bruh";
-    } else if (current_round = 5) {
-        //current_streak += 1;
-        if (args == "guess_correct") {
-        current_streak += 1;
-        document.getElementById("score_box").innerHTML = "Nice, you got all your guesses correct!";
-
-        //todo send win stats
+        document.getElementById("score_box").innerHTML = correct_guesses + "/" + current_round + ": " + "Bruh";
+    } else {
+        //current round will be 5
+        if ((args == "guess_correct") && (current_round == 4) && (correct_guesses == 4)) { //if the player hit a 5 streak
+            correct_guesses += 1;
+            current_round += 1;
+            document.getElementById("score_box").innerHTML = "Nice, you got all your guesses correct!";
+            //todo send win stats
+            //todo add share the end game stats
         } else {
-            document.getElementById("score_box").innerHTML = "Game complete! You scored: " + current_streak + "/" + current_round;
-
+            current_round += 1;
+            document.getElementById("score_box").innerHTML = "Game complete! You scored: " + correct_guesses + "/" + current_round;
             //todo send gameplay stats
+            //todo add share end game stats
         }
     }
 
