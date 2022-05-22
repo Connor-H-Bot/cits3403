@@ -106,26 +106,24 @@ function tweet_selected(tweet_selected_int, user_selected, not_selected) {
 function start_next_round(args) {
 
     //if the streak hasnt hit 5 and the last round was won
-    if ((current_round < 4) && (args == "guess_correct")) {
+    if ((current_round < 4) && (args == "guess_correct")) { //Less than 5 rounds played, and user guesses correctly
         correct_guesses += 1;
         current_round += 1;
         document.getElementById("score_box").innerHTML = correct_guesses + "/" + current_round + ": " + "Nice, very based";
-    } else if (current_round < 4 && args == "guess_incorrect") {
+    } else if (current_round < 4 && args == "guess_incorrect") { //Lt 5 rounds played, and user makes an incorrect guess
         current_round += 1;
         document.getElementById("score_box").innerHTML = correct_guesses + "/" + current_round + ": " + "Bruh";
-    } else {
-        //current round will be 5
+
+    } else { //When the player is on round 5
         if ((args == "guess_correct") && (current_round == 4) && (correct_guesses == 4)) { //if the player hit a 5 streak
             correct_guesses += 1;
             current_round += 1;
             document.getElementById("score_box").innerHTML = "Nice, you got all your guesses correct!";
-            //todo send win stats
-            //todo add share the end game stats
-        } else {
+            post_stats(1, 1, 1); //posts user id, one more game won, one more game played (admin id (1) is the default for this)
+        } else {                    //user hasnt hit a 5 streak but still completed the game
             current_round += 1;
             document.getElementById("score_box").innerHTML = "Game complete! You scored: " + correct_guesses + "/" + current_round;
-            //todo send gameplay stats
-            //todo add share end game stats
+            post_stats(1, 0, 1); //posts user id, one more game won, one more game played (admin id (1) is the default for this)
         }
     }
 
@@ -136,6 +134,27 @@ function start_next_round(args) {
     populate_right_tweets(trump_loc[1]);    //Updates displayed other tweet
 }
 
+//todo --get this working properly VVV
+//Post the end of game statistics
+function post_stats(user_id, won_int, played_int) {
+    var win_streak = 0;
+    var xhReq = new XMLHttpRequest();
+    var url = "/";
+    xhReq.open("POST", url, true);
+    xhReq.setRequestHeader("Content-Type", "application/json");
+
+    if (won_int = 1) {
+    win_streak = 1;
+    }
+    data_to_post = JSON.stringify({
+        "userID": user_id,              //userID to credit this to a user
+        "timesPlayed": won_int,        //add 1 to times played
+        "numWins": played_int,        //add 0 or 1 to win chart
+        "currentWinStrk": win_streak //adds 1 or 0 to win streak
+    }); 
+    console.log(data_to_post); // xhReq.send(
+}
+//todo --get this working properly ^^^
 
 //When a guess is made/tweet clicked, this will animate a flip card effect on the css while the next tweet loads in. 
 function animate_selection(user_selected, not_selected, answer_css_array) {
