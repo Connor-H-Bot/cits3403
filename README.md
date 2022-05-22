@@ -33,10 +33,6 @@ pip install -U Flask-SQLAlchemy
 pip install Flask-Migrate
 pip install flask-login
 pip install -U Flask-WTF
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
-
 ```
 ## References
 Twitter style CSS: Moshfequr Rahman (2018) Codepen. _https://codepen.io/moshfequr9/pen/wXQbPR_
