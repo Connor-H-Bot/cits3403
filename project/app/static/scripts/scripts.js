@@ -7,7 +7,6 @@
 //Global variables
 var current_streak = 0; // how many guesses the user's got correct
 var current_round = 0; // How many rounds / 5 the user has played
-var tweets_shown = 0; //counts how many tweets have been displayed
 var trump_tweet = {}; //JSON arrays to hold the current tweet
 var other_tweet = {};
 var tweets_array = []; // Boolean values for if the tweet is trump [0] = left, [1] = right
@@ -21,7 +20,6 @@ window.onload = load_tweets();
 function load_tweets(){ 
     current_streak = 0; // how many guesses the user's got correct
     current_round = 0; // How many rounds / 5 the user has played
-    tweets_shown = 0;
     //get_x_json retrieves the two tweets from the server
     get_trump_json(); 
     get_other_json();
@@ -37,19 +35,19 @@ function get_trump_json() { //gets trump tweet
     var xhReq = new XMLHttpRequest();
     xhReq.open("GET", "http://127.0.0.1:5000/api/getTrump", false);
     xhReq.send(null);
-    trump_tweet = JSON.parse(xhReq.responseText); //populates trump tweet JSON with this
+    trump_tweet = JSON.parse(xhReq.responseText); //populates trump tweet JSON 
 }
 function get_other_json(){ //get non trump tweet
     var xhReq = new XMLHttpRequest();
     xhReq.open("GET", "http://127.0.0.1:5000/api/getOther", false);
     xhReq.send(null);
-    other_tweet = JSON.parse(xhReq.responseText); //populates other tweet JSON with this
+    other_tweet = JSON.parse(xhReq.responseText); //populates other tweet JSON 
 }
 
 
-//Randomise the position of the trump tweet (decide which side it is on)
+//Randomise the position of the trump tweet by generating a random int either 0 or 1. The number = position of trumps tweet
 function tweet_position() {
-    var random_int = (Math.floor(Math.random() * 100) % 2);
+    var random_int = (Math.floor(Math.random() * 100) % 2); //creates a random 0 or 1
     
     if (random_int == 0) {
         tweets_array = [true, false];
@@ -65,7 +63,7 @@ function tweet_position() {
 //Populates the tweets and resets the game to 0. After this all the functions are driven by a mouse click event
 function populate_tweets() {
     current_streak = 0; 
-    tweets_shown = 0;
+    current_round = 0;
     var trump_loc = tweet_position(); //Randomises tweet positions, storing values as an array
     populate_left_tweets(trump_loc[0]);
     populate_right_tweets(trump_loc[1]);
@@ -88,11 +86,12 @@ function choice_2_selected() {
 
 
 //Checks if the answer was right/wrong then animates the selection
-function tweet_selected(tweet_selected_int, user_selected, not_selected) {
-    var is_trump_bool = tweets_array[tweet_selected_int]; //
-    var answer_css_array = answer_css(is_trump_bool);
+function tweet_selected(tweet_selected_int, user_selected, not_selected) { 
+    var is_trump_bool = tweets_array[tweet_selected_int];   //is_trump_bool is true/false depending whether the selected tweet was trummps
+    var answer_css_array = answer_css(is_trump_bool);       //creates an array with css for right/wrong. User selected element is answer_css_array[0]
     animate_selection(user_selected, not_selected, answer_css_array);
 
+    //If the trump tweet is tru or false, begins next round sequence
     if (is_trump_bool == true) {
         //start next round and continue streak
         start_next_round("guess_correct");
@@ -106,12 +105,6 @@ function tweet_selected(tweet_selected_int, user_selected, not_selected) {
 
 function start_next_round(args) {
 
-    get_trump_json(); 
-    get_other_json();
-    var trump_loc = tweet_position(); //Randomises new tweet positions, storing values as an array
-    populate_left_tweets(trump_loc[0]);
-    populate_right_tweets(trump_loc[1]);
-
     //if the streak hasnt hit 5 and the last round was won
     if (current_round < 4 && args == "guess_correct") {
     current_streak += 1;
@@ -124,7 +117,6 @@ function start_next_round(args) {
         document.getElementById("score_box").innerHTML = current_streak + "/" + current_round + ": " + "Bruh";
     } else if (current_round = 5) {
         //current_streak += 1;
-        tweets_shown += 2;
         if (args == "guess_correct") {
         current_streak += 1;
         document.getElementById("score_box").innerHTML = "Nice, you got all your guesses correct!";
@@ -133,12 +125,19 @@ function start_next_round(args) {
         } else {
             document.getElementById("score_box").innerHTML = "Game complete! You scored: " + current_streak + "/" + current_round;
 
-            //todo send win statistics
+            //todo send gameplay stats
         }
     }
+
+    get_trump_json();                       //gets new trump tweet
+    get_other_json();                       //gets new other tweet
+    var trump_loc = tweet_position();       //Randomises new tweet positions, storing values as an array
+    populate_left_tweets(trump_loc[0]);     //Updates displayed trump tweet
+    populate_right_tweets(trump_loc[1]);    //Updates displayed other tweet
 }
 
 
+//When a guess is made/tweet clicked, this will animate a flip card effect on the css while the next tweet loads in. 
 function animate_selection(user_selected, not_selected, answer_css_array) {
     document.getElementById(user_selected).classList.add(answer_css_array[0]); //pass the css to start the animation
     document.getElementById(not_selected).classList.add(answer_css_array[1]);
