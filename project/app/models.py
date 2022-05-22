@@ -38,14 +38,21 @@ class Users(UserMixin, db.Model):
         return check_password_hash(self.passwordHash, passsword)
 
 class userStatistics(db.Model):
-    __tablename__ = 'userStats'
-    statID = db.Column(db.Integer, primary_key=True)
-    userID = db.Column(db.Integer)
-    timesPlayed = db.Column(db.Integer)
-    numWins = db.Column(db.Integer)
-    winPercent = db.Column(db.Integer)
-    currentWinStrk = db.Column(db.Integer)
-    highestWinStrk = db.Column(db.Integer)
+    __tablename__ = 'user_statistics'
+    user_id = db.Column(db.Integer, primary_key=True)
+    times_played = db.Column(db.Integer)
+    times_won = db.Column(db.Integer)
+    current_streak = db.Column(db.Integer)
+    highest_streak = db.Column(db.Integer)
+    def to_dict(self):
+        stats = {
+            "userID": self.user_id,
+            "timesPlayed": self.times_played,
+            "numWins": self.times_won,
+            "currentWinStrk": self.current_streak,
+            "highestWinStrk": self.highest_streak
+        }
+        return stats
 
 
 class Trump(db.Model): #return the trump tweets as a dictionary
@@ -84,5 +91,4 @@ class NotTrump(db.Model): #return the non trump tweets as dictionary
             "retweets": self.retweets,
             "isTrump": False
         }
-
         return tweet

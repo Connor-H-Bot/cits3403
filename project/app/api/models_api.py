@@ -21,6 +21,14 @@ def getOther():
 
     return jsonify(returned_other_tweets[0].to_dict())
 
+#TODO - use currently logged in users ID for the argument
+#Get statistics for the logged in user
+@app.route('/api/get_stats', methods=['GET'])
+def get_stats():
+    returned_stats = models.userStatistics.query.filter_by(user_id="1").order_by().all() #user ID needs to change to logged in ID
+    return jsonify(returned_stats[0].to_dict())
+
+
 #Admin function to add tweets to the database from the website settings page
 @app.route('/api/submitTweet', methods=['POST'])
 def submitTweet():
