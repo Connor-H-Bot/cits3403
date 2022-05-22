@@ -144,7 +144,7 @@ function animate_selection(user_selected, not_selected, answer_css_array) {
     document.getElementById("left_tweet_content").classList.add("invisible");
     document.getElementById("right_tweet_content").classList.add("invisible");
 
-    //callback function based on timer flip the css back to show the tweets 
+    //callback function based on timer flips the css back to show the tweets 
     function change_back() { 
         document.getElementById(user_selected).classList.remove(answer_css_array[0]);
         document.getElementById(not_selected).classList.remove(answer_css_array[1]);
