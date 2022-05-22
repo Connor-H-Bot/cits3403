@@ -96,6 +96,7 @@ function tweet_selected(tweet_selected_int, user_selected, not_selected) {
     else {
         //start again and display loss of streak
         load_tweets();
+        document.getElementById("score_box").innerHTML = "Streak lost! Try again."; 
         //send lost game statistic
     }
 }
@@ -151,16 +152,17 @@ function answer_css(index) {
 function populate_left_tweets(author) {
     document.getElementById("left_tweet_likes").innerHTML = add_commas(author.likes); //change # of likes
     document.getElementById("left_tweet_retweets").innerHTML = add_commas(author.retweets); // change # of retweets
-    document.getElementById("left_tweet_body").innerHTML = extend_tweets_length(author.body); //change the body of the new tweet 
+    document.getElementById("left_tweet_body").innerHTML = author.body; //change the body of the new tweet 
     document.getElementById("left_tweet_comments").innerHTML = add_commas((author.likes - author.retweets)); //comments # = (likes - retweets)
     document.getElementById("left_tweet_date").innerHTML = author.year; //year tweet was posted
 }
 function populate_right_tweets(author) {
     document.getElementById("right_tweet_likes").innerHTML = add_commas(author.likes); //change # of likes
     document.getElementById("right_tweet_retweets").innerHTML = add_commas(author.retweets); // change # of retweets
-    document.getElementById("right_tweet_body").innerHTML = extend_tweets_length(author.body); //change the body of the new tweet 
+    document.getElementById("right_tweet_body").innerHTML = author.body; //change the body of the new tweet 
     document.getElementById("right_tweet_comments").innerHTML = add_commas((author.likes - author.retweets)); //comments # = (likes - retweets)
     document.getElementById("right_tweet_date").innerHTML = author.year; //year tweet was posted
+    set_body_length();
 }
 
 
@@ -171,7 +173,7 @@ function tweets_refresh_animation() {
     document.getElementById("right_side_tweet").classList.add("change_guess");
     document.getElementById("right_tweet_content").classList.add("invisible");
     document.getElementById("score_box").innerHTML = "\"He who is redpilled is not necessarily based, just as he who is bluepilled is not necessarily cringe\" - Confucius"
-    
+
     //callback function for interval to hold animation
     function change_back() { 
         document.getElementById("left_side_tweet").classList.remove("change_guess"); //change it all back
@@ -215,4 +217,25 @@ function extend_tweets_length(input_string) {
         blank_space += blank_space.repeat(blanks_to_add); //repeats the spaces to fill 160 chars
     }
     return (input_string + blank_space)
+}
+
+// Makes both tweets the same length for visual effects on page
+function set_body_length() {
+    tweet_1_body = document.getElementById("left_tweet_body").innerHTML;
+    tweet_2_body = document.getElementById("right_tweet_body").innerHTML;
+    var t1_length = tweet_1_body.length;
+    var t2_length = tweet_2_body.length;
+    var blank_space = ('\xa0' + ' '); //\xa0 is the symbol for a blank space
+
+    //make the shortest tweet == the length of the longest
+    if (t1_length > t2_length) {
+        let blank_space_count = (t1_length - t2_length);
+        tweet_2_body += blank_space.repeat(blank_space_count);
+    } else {
+        let blank_space_count = (t2_length - t1_length);
+        tweet_1_body += blank_space.repeat(blank_space_count);
+    }
+
+    document.getElementById("left_tweet_body").innerHTML = tweet_1_body;
+    document.getElementById("right_tweet_body").innerHTML = tweet_2_body;
 }
