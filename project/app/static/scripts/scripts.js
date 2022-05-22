@@ -6,6 +6,7 @@
 
 //Global variables
 var current_streak = 0; // how many guesses the user's got correct
+var current_round = 0; // How many rounds / 5 the user has played
 var tweets_shown = 0; //counts how many tweets have been displayed
 var trump_tweet = {}; //JSON arrays to hold the current tweet
 var other_tweet = {};
@@ -18,6 +19,9 @@ window.onload = load_tweets();
 
 //Construct the game 
 function load_tweets(){ 
+    current_streak = 0; // how many guesses the user's got correct
+    current_round = 0; // How many rounds / 5 the user has played
+    tweets_shown = 0;
     //get_x_json retrieves the two tweets from the server
     get_trump_json(); 
     get_other_json();
@@ -33,13 +37,13 @@ function get_trump_json() { //gets trump tweet
     var xhReq = new XMLHttpRequest();
     xhReq.open("GET", "http://127.0.0.1:5000/api/getTrump", false);
     xhReq.send(null);
-    trump_tweet = JSON.parse(xhReq.responseText);
+    trump_tweet = JSON.parse(xhReq.responseText); //populates trump tweet JSON with this
 }
 function get_other_json(){ //get non trump tweet
     var xhReq = new XMLHttpRequest();
     xhReq.open("GET", "http://127.0.0.1:5000/api/getOther", false);
     xhReq.send(null);
-    other_tweet = JSON.parse(xhReq.responseText);
+    other_tweet = JSON.parse(xhReq.responseText); //populates other tweet JSON with this
 }
 
 
@@ -91,32 +95,46 @@ function tweet_selected(tweet_selected_int, user_selected, not_selected) {
 
     if (is_trump_bool == true) {
         //start next round and continue streak
-        start_next_round();
+        start_next_round("guess_correct");
     }
     else {
         //start again and display loss of streak
-        load_tweets();
-        document.getElementById("score_box").innerHTML = "Streak lost! Try again."; 
+        start_next_round("guess_incorrect");
         //send lost game statistic
     }
 }
 
-function start_next_round() {
-    
-    //if the streak hasnt hit 5
-    if (current_streak < 4) {
-    current_streak += 1;
-    tweets_shown += 2;
+function start_next_round(args) {
+
     get_trump_json(); 
     get_other_json();
-    var trump_loc = tweet_position(); //Randomises tweet positions, storing values as an array
+    var trump_loc = tweet_position(); //Randomises new tweet positions, storing values as an array
     populate_left_tweets(trump_loc[0]);
     populate_right_tweets(trump_loc[1]);
-    document.getElementById("score_box").innerHTML = current_streak + ": Nice, very based";
-    }
-    else {
-        document.getElementById("score_box").innerHTML = "Game won!";
-        //send win statistics
+
+    //if the streak hasnt hit 5 and the last round was won
+    if (current_round < 4 && args == "guess_correct") {
+    current_streak += 1;
+    current_round += 1;
+    tweets_shown += 2;
+    document.getElementById("score_box").innerHTML = current_streak + "/" + current_round + ": " + "Nice, very based";
+    } else if (current_round < 4 && args == "guess_incorrect") {
+        current_round += 1;
+        tweets_shown += 2;
+        document.getElementById("score_box").innerHTML = current_streak + "/" + current_round + ": " + "Bruh";
+    } else if (current_round = 5) {
+        //current_streak += 1;
+        tweets_shown += 2;
+        if (args == "guess_correct") {
+        current_streak += 1;
+        document.getElementById("score_box").innerHTML = "Nice, you got all your guesses correct!";
+
+        //todo send win stats
+        } else {
+            document.getElementById("score_box").innerHTML = "Game complete! You scored: " + current_streak + "/" + current_round;
+
+            //todo send win statistics
+        }
     }
 }
 
@@ -225,7 +243,7 @@ function set_body_length() {
     tweet_2_body = (document.getElementById("right_tweet_body").innerHTML + ' ');
     var t1_length = tweet_1_body.length;
     var t2_length = tweet_2_body.length;
-    var blank_space = ('\xa0' + ' '); //\xa0 is the symbol for a blank space
+    var blank_space = ('\xa0'); //\xa0 is the symbol for a blank space
 
     //make the shortest tweet == the length of the longest
     if (t1_length > t2_length) {

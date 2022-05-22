@@ -6,7 +6,7 @@
 document.getElementById("resetButton").addEventListener("click", refresh_Page);
 
 function refresh_Page(){
-    populate_tweets();
+    load_tweets();
 }
 
 //function to rotate icon
