@@ -11,13 +11,19 @@ Trumpter is a website that presents the user with two tweets. The aim for the us
 In order to match the controversy/absurdity of Trump's online persona, his own tweets are paired with other outrageous posts from celebrities such as Kanye West,  50 Cent, Ryan Reynolds, ect. 
 
 This website has been designed for the CITS3403 main project. The architecture of the website is as follows:
+
 -HTML is divided up into templates, which contain variable content.
+
 -CSS is a mix of bootstrap, content we copy (and reference), and our own custom work. 
+
 -Javascript is used for the game logic, DOM manipulation, and server GET/POST requests. Data is transferred as JSON.
 
 Backend: 
+
 -Flask, with an initial file (trumpter.py) initialising a chain reaction of configurations that create the virtual infrastructure.
+
 -SQLAlchemy for DB migrations, as well as CRUD (create, read, update, delete) operations on the database. SQLITE3 was the selected SQL engine. 
+
 -HTML templates which are sent to the client, and then the data
 
 
