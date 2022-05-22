@@ -356,9 +356,15 @@
     justify-content: center;
   }
 
-  /*##########################*/
-  /* Tweets CSS BELOW */
-  /*##########################*/
+
+  /*##########################
+
+  Tweets CSS BELOW (This is a heavily modified version of CSS pulled from CODEPEN. Ref below;
+
+  Moshfequr Rahman (2018) Codepen. https://codepen.io/moshfequr9/pen/wXQbPR
+
+  ##########################*/
+
   .center {
     margin: auto;
     color: #ffffff;
@@ -614,12 +620,14 @@
   }
 
   img {
-    max-width: 100%;
+    max-width: 48px;
+    max-height: 48px;
   }
 
   .avator {
     border-radius: 100px;
     width: 48px;
+    height: 48px;
     margin-right: 15px;
   }
 
@@ -768,6 +776,13 @@
       margin-left: 10px;
     }
 
+    .tweet-header-info div {
+      color: #9c9c9c;
+      font-weight: normal;
+      margin-left: 1px;
+      margin-right: 1px;
+    }
+
     .tweet-header-info span {
       color: #9c9c9c;
       font-weight: normal;
@@ -777,6 +792,15 @@
 
     #tweetBody{
       max-width: 325px;
+    }
+  }
+
+  /* 
+    media and screen lt 400
+  */
+  @media screen and (max-width:400px) {
+    .tweet-header-info div {
+      width: 60%;
     }
   }
 
@@ -854,4 +878,8 @@
     transform: rotateX(180deg);
     backface-visibility: visible;
     display: flex;
+  }
+
+  .nullify_click {
+    pointer-events: none; 
   }
