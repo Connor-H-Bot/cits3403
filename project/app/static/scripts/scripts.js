@@ -221,8 +221,8 @@ function extend_tweets_length(input_string) {
 
 // Makes both tweets the same length for visual effects on page
 function set_body_length() {
-    tweet_1_body = document.getElementById("left_tweet_body").innerHTML;
-    tweet_2_body = document.getElementById("right_tweet_body").innerHTML;
+    tweet_1_body = (document.getElementById("left_tweet_body").innerHTML + ' ');
+    tweet_2_body = (document.getElementById("right_tweet_body").innerHTML + ' ');
     var t1_length = tweet_1_body.length;
     var t2_length = tweet_2_body.length;
     var blank_space = ('\xa0' + ' '); //\xa0 is the symbol for a blank space
