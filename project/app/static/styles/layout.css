@@ -148,6 +148,7 @@
   .alertPad{
     margin-top: 15px;
   }    
+  
   .settingsScreenOFF {
     display: none;
   }
@@ -172,6 +173,8 @@
     justify-content: space-between;
     margin-top: 20px;
     align-items: baseline;
+    margin-bottom: 20px;
+    border-bottom: solid 1px white ;
   }
 
   .settingTitle {
@@ -182,22 +185,6 @@
   #flexSwitchCheckDefault{
     width:60px;
     height:30px;
-  }
-
-  .contrastButton{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid white;
-    margin-top: 10px;
-    padding-bottom: 20px;
-    font-size: 20px;
-    color: white;
-  }
-
-  #contrastTitle{
-    margin:5px;
   }
 
   .formSubmit{

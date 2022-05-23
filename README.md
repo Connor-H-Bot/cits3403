@@ -29,8 +29,8 @@ Backend:
 
 ## Usage
 
-```Copy this into your terminal, ensuring youre inside the "project" folder: **there is a trumpter.py, app.db, and config.py file in this directory**
-
+Once inside the main project directory, copy and paste this into your terminal;
+```
 python3 -m venv venv
 source venv/bin/activate
 export FLASK_DEBUG=1
@@ -40,7 +40,18 @@ pip install Flask-Migrate
 pip install flask-login
 pip install -U Flask-WTF
 pip install email_validator
+
+flask run
 ```
+After this, your localhost (http://127.0.0.1:5000) will be the address to visit the website. 
+
+## Troubleshooting
+Some issues discovered that have easy fixes;
+
+-Pip install being out of date (even by a few versions) stopped the application from running at all. Make sure pip is up to date before entering a virtual environment (venv)
+
+-If you're on an apple computer disable airplay reciever (it uses port: 5000 which interferes with your localhost)
+
 ## References
 Twitter style CSS: Moshfequr Rahman (2018) Codepen. _https://codepen.io/moshfequr9/pen/wXQbPR_
 
