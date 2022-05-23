@@ -140,10 +140,8 @@ function start_next_round(args) {
 
 //Change the content at the end of the game to display nothing
 function end_game_screen() { 
-    console.log("End game screen called");
     //works on callback to stop interference
     function change_content() { 
-    console.log("callback called");
     document.getElementById("left_tweet_content").classList.add("invisible");
     document.getElementById("right_tweet_content").classList.add("invisible");
     document.getElementById("div_2").classList.add("nullify_click"); //remove the ability to click on anyt tweets during the animation
