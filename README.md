@@ -26,7 +26,6 @@ Backend:
 
 -HTML templates which are sent to the client, and then the data
 
-
 ## Usage
 
 Once inside the main project directory, copy and paste this into your terminal;
@@ -45,7 +44,14 @@ flask run
 ```
 After this, your localhost (http://127.0.0.1:5000) will be the address to visit the website. 
 
+## Current bugs & features that require attention
+
+-Leaderboard feature: Statistics models implemented properly, able to receive statistics from the server. error on client side trying to send a POST request with a JSON of the current game statistics to the server for handling.
+
+-Achievements: located in the leaderboards section there are three buttons at the bottom of the modal. There are inteded to be achievement buttons that when clicked goto a different page that can be saved or shared.
+
 ## Troubleshooting
+
 Some issues discovered that have easy fixes;
 
 -Pip install being out of date (even by a few versions) stopped the application from running at all. Make sure pip is up to date before entering a virtual environment (venv)
@@ -55,6 +61,7 @@ Some issues discovered that have easy fixes;
 -Database not returning any tables (when you go to localhost/api/getTrump ect) - When this happens copy the database from /app/app.db into the main directory folder, replacing the one in there. Sometimes the content from app.db in the main folder is wiped, which makes it a 0kb file.
 
 ## References
+
 Twitter style CSS: Moshfequr Rahman (2018) Codepen. _https://codepen.io/moshfequr9/pen/wXQbPR_
 
 
