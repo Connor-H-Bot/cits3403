@@ -52,6 +52,8 @@ Some issues discovered that have easy fixes;
 
 -If you're on an apple computer disable airplay reciever (it uses port: 5000 which interferes with your localhost)
 
+-Database not returning any tables (when you go to localhost/api/getTrump ect) - When this happens copy the database from /app/app.db into the main directory folder, replacing the one in there. Sometimes the content from app.db in the main folder is wiped, which makes it a 0kb file.
+
 ## References
 Twitter style CSS: Moshfequr Rahman (2018) Codepen. _https://codepen.io/moshfequr9/pen/wXQbPR_
 
