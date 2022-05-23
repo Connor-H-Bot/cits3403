@@ -39,6 +39,7 @@ pip install -U Flask-SQLAlchemy
 pip install Flask-Migrate
 pip install flask-login
 pip install -U Flask-WTF
+pip install email_validator
 
 flask run
 ```

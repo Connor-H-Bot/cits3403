@@ -164,7 +164,7 @@ function remove_end_game_screen() {
 function post_stats(user_id, won_int, played_int) {
     var win_streak = 0;
     var xhReq = new XMLHttpRequest();
-    var url = "/";
+    var url = "/api/postStats";
     xhReq.open("POST", url, true);
     xhReq.setRequestHeader("Content-Type", "application/json");
 
@@ -177,7 +177,8 @@ function post_stats(user_id, won_int, played_int) {
         "numWins": played_int,        //add 0 or 1 to win chart
         "currentWinStrk": win_streak //adds 1 or 0 to win streak
     }); 
-    xhReq.send(data_to_post);     // xhReq.send(
+    console.log(data_to_post);     // xhReq.send(
+    xhReq.send(data_to_post);
 }
 //todo --get this working properly ^^^
 
