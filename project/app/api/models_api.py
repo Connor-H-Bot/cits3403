@@ -55,7 +55,7 @@ def submitTweet():
 
 #todo - apply it to logged in user
 #API route to POST game statistics to the server
-@app.route('/', methods=['POST'])
+@app.route('/api/postStats', methods=['POST'])
 def record_game_stats(end_game_stats): 
     current_stats = models.userStatistics.query.filter_by(user_id="1").order_by().all() #todo user ID needs to change to logged in ID
     current_stats.timesPlayed += 1 
