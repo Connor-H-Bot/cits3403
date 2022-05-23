@@ -2,7 +2,7 @@ from app import app, db
 from app.models import Users
 from app.api.models_api import addUser
 from app.forms import LoginForm, registrationForm
-from flask import render_template, redirect
+from flask import render_template, redirect, flash
 from flask_login import current_user, login_user, logout_user
 
 ################################################
@@ -22,6 +22,7 @@ def login():
             return render_template('settings.html', form=form)        
         login_user(user)
         return redirect('/')
+    flash('Unsuccessful Log In Attempt!', 'danger')
     return render_template('settings.html', form=form)
 
 #Route associated with the registration form submit
@@ -33,8 +34,10 @@ def register():
     if Rform.validate_on_submit():
         #add user to database with api call.
         addUser(Rform)
+        flash('Successful Registration, Please Log In', 'success')
         return redirect('/Settings')
     #else return to same page, so user can reattempt.
+    flash('Unsuccessful Registration Attempt!', 'danger')
     return render_template('Registration.html', Rform=Rform)
 
 #Route asssociated with the logout button sumbit action

@@ -15,6 +15,16 @@
         <!-- used to keep border  -->
     </div>
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}} alertPad" role="alert">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <div class="formSubmit">
         <h1>Register Account</h1>
         <form action="/Register" method="post" novalidate>
@@ -23,21 +33,28 @@
                 {{ Rform.username.label }}<br>
                 {{ Rform.username(size=32) }}<br>
                 {% for error in Rform.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span><br>
                 {% endfor %}
             </p>
             <p>
                 {{ Rform.password.label }}<br>
                 {{ Rform.password(size=32) }}<br>
                 {% for error in Rform.password.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span><br>
+                {% endfor %}
+            </p>
+            <p>
+                {{ Rform.confirm_password.label }}<br>
+                {{ Rform.confirm_password(size=32) }}<br>
+                {% for error in Rform.confirm_password.errors %}
+                <span style="color: red;">[{{ error }}]</span><br>
                 {% endfor %}
             </p>
             <p>
                 {{ Rform.email.label }}<br>
                 {{ Rform.email(size=32) }}<br>
                 {% for error in Rform.email.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span><br>
                 {% endfor %}
             </p>
             <p>{{ Rform.submit() }}</p>

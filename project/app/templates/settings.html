@@ -19,6 +19,16 @@
         </div>
     </div>
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}} alertPad" role="alert">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <div class="formSubmit">
         <h1>Sign In</h1>
         <form action="/login" method="post" novalidate>

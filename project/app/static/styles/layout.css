@@ -145,6 +145,9 @@
     flex-direction: column;
   }
 
+  .alertPad{
+    margin-top: 15px;
+  }    
   .settingsScreenOFF {
     display: none;
   }
