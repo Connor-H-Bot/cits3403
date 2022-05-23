@@ -140,10 +140,8 @@ function start_next_round(args) {
 
 //Change the content at the end of the game to display nothing
 function end_game_screen() { 
-    console.log("End game screen called");
     //works on callback to stop interference
     function change_content() { 
-    console.log("callback called");
     document.getElementById("left_tweet_content").classList.add("invisible");
     document.getElementById("right_tweet_content").classList.add("invisible");
     document.getElementById("div_2").classList.add("nullify_click"); //remove the ability to click on anyt tweets during the animation
@@ -179,7 +177,7 @@ function post_stats(user_id, won_int, played_int) {
         "numWins": played_int,        //add 0 or 1 to win chart
         "currentWinStrk": win_streak //adds 1 or 0 to win streak
     }); 
-    console.log(data_to_post);     // xhReq.send(
+    xhReq.send(data_to_post);     // xhReq.send(
 }
 //todo --get this working properly ^^^
 
