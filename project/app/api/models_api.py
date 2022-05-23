@@ -1,9 +1,11 @@
+from sqlalchemy import true
 from app import app, models, db
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql.expression import func
 from flask import jsonify, redirect, url_for
 import json
 from app.forms import submitaTweet
+from app.models import userStatistics
 
 #API for fetching a new trump tweet
 @app.route('/api/getTrump', methods=['GET'])
@@ -21,11 +23,14 @@ def getOther():
 
     return jsonify(returned_other_tweets[0].to_dict())
 
+
+    
+
 #TODO - use currently logged in users ID for the argument
 #Get statistics for the logged in user
 @app.route('/api/get_stats', methods=['GET'])
 def get_stats():
-    returned_stats = models.userStatistics.query.filter_by(user_id="1").order_by().all() #user ID needs to change to logged in ID
+    returned_stats = models.userStatistics.query.filter_by(user_id="1").order_by().all() #todo user ID needs to change to logged in ID
     return jsonify(returned_stats[0].to_dict())
 
 
@@ -46,6 +51,28 @@ def submitTweet():
             return redirect('/Settings')
     tweetForm = submitaTweet()
     return redirect('/Settings')
+
+
+#todo - apply it to logged in user
+#API route to POST game statistics to the server
+@app.route('/', methods=['POST'])
+def record_game_stats(end_game_stats): 
+    current_stats = models.userStatistics.query.filter_by(user_id="1").order_by().all() #todo user ID needs to change to logged in ID
+    current_stats.timesPlayed += 1 
+
+    if (current_stats.currentWinStrk >= current_stats.highestWinStrk): #update highest win streak if current is breaking the record
+        current_stats.highestWinStrk += 1
+
+    if end_game_stats.numWins == 1: #if the posted JSON wasnt a loss it wont break any streaks
+        current_stats.currentWinStrk += 1
+        current_stats.numWins += 1
+    elif end_game_stats.numWins == 0: #posted JSOn was a loss, break the streak
+        current_stats.currentWinStrk = 0
+    
+    db.session.add(current_stats)
+    db.session.commit()
+    
+
 
 #Adds new users to the database. 
 @app.route('/api/addUser', methods=['POST'])

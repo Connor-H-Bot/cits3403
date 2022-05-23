@@ -18,6 +18,7 @@ window.onload = load_tweets();
 
 //Construct the game 
 function load_tweets(){ 
+    remove_end_game_screen()
     correct_guesses = 0; // how many guesses the user's got correct
     current_round = 0; // How many rounds / 5 the user has played
     //get_x_json retrieves the two tweets from the server
@@ -91,44 +92,44 @@ function tweet_selected(tweet_selected_int, user_selected, not_selected) {
     var answer_css_array = answer_css(is_trump_bool);       //creates an array with css for right/wrong. User selected element is answer_css_array[0]
     animate_selection(user_selected, not_selected, answer_css_array);
 
-    //If the trump tweet is tru or false, begins next round sequence
-    if (is_trump_bool == true) {
-        //start next round and continue streak
+    if (is_trump_bool == true) { //If the trump tweet is true or false, begins next round sequence
         start_next_round("guess_correct");
     }
     else {
-        //start again and display loss of streak
         start_next_round("guess_incorrect");
-        //send lost game statistic
     }
 }
 
+
+//Starts the next round by updating score both internally & visually
 function start_next_round(args) {
 
     //if the streak hasnt hit 5 and the last round was won
-    if ((current_round < 4) && (args == "guess_correct")) {
+    if ((current_round < 4) && (args == "guess_correct")) { //Less than 5 rounds played, and user guesses correctly
         correct_guesses += 1;
         current_round += 1;
         document.getElementById("score_box").innerHTML = correct_guesses + "/" + current_round + ": " + "Nice, very based";
-    } else if (current_round < 4 && args == "guess_incorrect") {
+    } else if (current_round < 4 && args == "guess_incorrect") { //Less than 5 rounds played, and user makes an incorrect guess
         current_round += 1;
         document.getElementById("score_box").innerHTML = correct_guesses + "/" + current_round + ": " + "Bruh";
-    } else {
-        //current round will be 5
+
+    } else { //When the player is on round 5
         if ((args == "guess_correct") && (current_round == 4) && (correct_guesses == 4)) { //if the player hit a 5 streak
             correct_guesses += 1;
             current_round += 1;
             document.getElementById("score_box").innerHTML = "Nice, you got all your guesses correct!";
-            //todo send win stats
-            //todo add share the end game stats
-        } else {
+            //posts user id, one more game won, one more game played (admin id (1) is the default for this)
+            post_stats(1, 1, 1);
+            end_game_screen()
+            return  
+        } else {   //user hasnt hit a 5 streak but still completed the game
             current_round += 1;
             document.getElementById("score_box").innerHTML = "Game complete! You scored: " + correct_guesses + "/" + current_round;
-            //todo send gameplay stats
-            //todo add share end game stats
+            post_stats(1, 0, 1); //posts user id, one more game won, one more game played (admin id (1) is the default for this)
+            end_game_screen()
+            return
         }
     }
-
     get_trump_json();                       //gets new trump tweet
     get_other_json();                       //gets new other tweet
     var trump_loc = tweet_position();       //Randomises new tweet positions, storing values as an array
@@ -137,26 +138,79 @@ function start_next_round(args) {
 }
 
 
-//When a guess is made/tweet clicked, this will animate a flip card effect on the css while the next tweet loads in. 
-function animate_selection(user_selected, not_selected, answer_css_array) {
-    document.getElementById(user_selected).classList.add(answer_css_array[0]); //pass the css to start the animation
-    document.getElementById(not_selected).classList.add(answer_css_array[1]);
+//Change the content at the end of the game to display nothing
+function end_game_screen() { 
+    console.log("End game screen called");
+    //works on callback to stop interference
+    function change_content() { 
+    console.log("callback called");
     document.getElementById("left_tweet_content").classList.add("invisible");
     document.getElementById("right_tweet_content").classList.add("invisible");
+    document.getElementById("div_2").classList.add("nullify_click"); //remove the ability to click on anyt tweets during the animation
+    document.getElementById("div_3").classList.add("nullify_click");
+    }
+    setTimeout(change_content, 1450); //callback is slightly longer than animation time
+}
+
+//Reinstate content that would otherwise be blocked due to end screen 
+function remove_end_game_screen() { 
+    document.getElementById("left_tweet_content").classList.remove("invisible");
+    document.getElementById("right_tweet_content").classList.remove("invisible");
+    document.getElementById("div_2").classList.remove("nullify_click"); //remove the ability to click on anyt tweets during the animation
+    document.getElementById("div_3").classList.remove("nullify_click");
+    
+}
+
+//todo --get this working properly VVV
+//Post the end of game statistics       currently console.logs
+function post_stats(user_id, won_int, played_int) {
+    var win_streak = 0;
+    var xhReq = new XMLHttpRequest();
+    var url = "/";
+    xhReq.open("POST", url, true);
+    xhReq.setRequestHeader("Content-Type", "application/json");
+
+    if (won_int = 1) {
+    win_streak = 1;
+    }
+    data_to_post = JSON.stringify({
+        "userID": user_id,              //userID to credit this to a user
+        "timesPlayed": won_int,        //add 1 to times played
+        "numWins": played_int,        //add 0 or 1 to win chart
+        "currentWinStrk": win_streak //adds 1 or 0 to win streak
+    }); 
+    console.log(data_to_post);     // xhReq.send(
+}
+//todo --get this working properly ^^^
+
+
+//When a guess is made/tweet clicked, this will animate a flip card effect on the css while the next tweet loads in. 
+function animate_selection(user_selected, not_selected, answer_css_array) {
+    document.getElementById(user_selected).classList.add(answer_css_array[0]); //Flips the tweet cards, with correct showing green and wrong showing red
+    document.getElementById(not_selected).classList.add(answer_css_array[1]);
+    document.getElementById("left_tweet_content").classList.add("invisible"); //Makes tweet content invisible for flip duration
+    document.getElementById("right_tweet_content").classList.add("invisible");
+    document.getElementById("div_2").classList.add("nullify_click"); //remove the ability to click on anyt tweets during the animation
+    document.getElementById("div_3").classList.add("nullify_click");
 
     //callback function based on timer flips the css back to show the tweets 
     function change_back() { 
-        document.getElementById(user_selected).classList.remove(answer_css_array[0]);
+        document.getElementById(user_selected).classList.remove(answer_css_array[0]); //Flip card tweets back
         document.getElementById(not_selected).classList.remove(answer_css_array[1]);
-        document.getElementById("left_tweet_content").classList.remove("invisible");
-    document.getElementById("right_tweet_content").classList.remove("invisible");
+        document.getElementById("left_tweet_content").classList.remove("invisible"); //Bring content back
+        document.getElementById("right_tweet_content").classList.remove("invisible");
+
+        document.getElementById("div_2").classList.remove("nullify_click"); //Make tweets clickable again
+        document.getElementById("div_3").classList.remove("nullify_click");
     }
     setTimeout(change_back, 1400); //callback after 1.4 seconds
 }
 
 
-function answer_css(index) {
-    if (index == true) {
+//When the user clicks, returns true/false with [0] being player guess. 
+//Strings in array are CSS classes for green/red flip card animation
+function answer_css(is_trump_tweet_boolean) {
+    if (is_trump_tweet_boolean == true) {
         return ["correct_guess", "wrong_guess"];
     }
     else {
@@ -189,14 +243,18 @@ function tweets_refresh_animation() {
     document.getElementById("left_tweet_content").classList.add("invisible"); //make tweet content blank 
     document.getElementById("right_side_tweet").classList.add("change_guess");
     document.getElementById("right_tweet_content").classList.add("invisible");
+    document.getElementById("div_2").classList.add("nullify_click"); //remove the ability to click on anything here during the animation
+    document.getElementById("div_3").classList.add("nullify_click");
     document.getElementById("score_box").innerHTML = "\"He who is redpilled is not necessarily based, just as he who is bluepilled is not necessarily cringe\" - Confucius"
 
-    //callback function for interval to hold animation
+    //callback function for interval to hold animation. Removes all the css added from above
     function change_back() { 
-        document.getElementById("left_side_tweet").classList.remove("change_guess"); //change it all back
+        document.getElementById("left_side_tweet").classList.remove("change_guess");
         document.getElementById("left_tweet_content").classList.remove("invisible");
         document.getElementById("right_side_tweet").classList.remove("change_guess");
         document.getElementById("right_tweet_content").classList.remove("invisible");
+        document.getElementById("div_2").classList.remove("nullify_click");
+        document.getElementById("div_3").classList.remove("nullify_click");
     }
     setTimeout(change_back, 1000); //callback after 1 second
 }
@@ -223,26 +281,13 @@ function add_commas(integer) {
 }
 
 
-//Extend the length of the tweet body so that its always 150 characters (fills with blank spaces)
-function extend_tweets_length(input_string) {
-    var lettercount = input_string.length;
-    var blank_space = ('\xa0' + ' '); //\xa0 is the symbol for a blank space
-
-    //uses 160 as the current tweet catalogue has nothing above 160 chars
-    if (lettercount < 160) { 
-        var blanks_to_add = (160 - lettercount);
-        blank_space += blank_space.repeat(blanks_to_add); //repeats the spaces to fill 160 chars
-    }
-    return (input_string + blank_space)
-}
-
 // Makes both tweets the same length for visual effects on page
 function set_body_length() {
-    tweet_1_body = (document.getElementById("left_tweet_body").innerHTML + ' ');
-    tweet_2_body = (document.getElementById("right_tweet_body").innerHTML + ' ');
-    var t1_length = tweet_1_body.length;
+    tweet_1_body = (document.getElementById("left_tweet_body").innerHTML + ' ');   //adds a blank space to the end of the tweet body
+    tweet_2_body = (document.getElementById("right_tweet_body").innerHTML + ' '); //so that the "\xa0" blank spaces added dont make the last 
+    var t1_length = tweet_1_body.length;                                         //word in tweet body excessively long
     var t2_length = tweet_2_body.length;
-    var blank_space = ('\xa0'); //\xa0 is the symbol for a blank space
+    var blank_space = ('\xa0'); //\xa0 is the unicode symbol for a blank space 
 
     //make the shortest tweet == the length of the longest
     if (t1_length > t2_length) {
