@@ -40,7 +40,7 @@ pip install flask-login
 pip install -U Flask-WTF
 pip install email_validator
 
-flask run
+python -m flask run
 ```
 After this, your localhost (http://127.0.0.1:5000) will be the address to visit the website. 
 
