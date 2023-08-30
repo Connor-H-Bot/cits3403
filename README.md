@@ -1,3 +1,5 @@
+<img width="1512" alt="image" src="https://github.com/Connor-H-Bot/cits3403/assets/60994277/0b6140bc-37fd-420e-a13e-faca635be0e8">
+
 # Trumpter
 
 Codebase for the Trumpter website. 
@@ -10,7 +12,7 @@ Trumpter is a website that presents the user with two tweets. The aim for the us
 
 In order to match the controversy/absurdity of Trump's online persona, his own tweets are paired with other outrageous posts from celebrities such as Kanye West,  50 Cent, Ryan Reynolds, ect. 
 
-This website has been designed for the CITS3403 main project. The architecture of the website is as follows:
+The architecture of the website is as follows:
 
 -HTML is divided up into templates, which contain variable content.
 
